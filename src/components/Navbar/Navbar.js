@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classnames from 'classnames';
 import { Menu } from "semantic-ui-react";
 import { NavLink, Link } from "react-router-dom";
 
@@ -13,6 +14,7 @@ const Navbar = () => {
     <Menu secondary className={styles.links}>
       <Menu.Menu position="right">
         <Menu.Item
+          className={classnames(styles.link, styles.Change, activeItem === "home" ? styles.active : '')}
           as={Link}
           to="/"
           name="home"
@@ -20,6 +22,7 @@ const Navbar = () => {
           onClick={handleItemClick}
         />
         <Menu.Item
+          className={classnames(styles.link, styles.Change, activeItem === "how to get involved" ? styles.active : '')}
           as={Link}
           to="/GettingInvolved"
           name="how to get involved"
@@ -27,6 +30,7 @@ const Navbar = () => {
           onClick={handleItemClick}
         />
         <Menu.Item
+          className={classnames(styles.link, styles.Change, activeItem === "news and events" ? styles.active : '')}
           as={Link}
           to="/NewsAndEvents"
           name="news and events"
@@ -34,6 +38,7 @@ const Navbar = () => {
           onClick={handleItemClick}
         />
         <Menu.Item
+          className={classnames(styles.link, styles.Change, activeItem === "resources" ? styles.active : '')}
           as={Link}
           to="/Resources"
           name="resources"
@@ -41,6 +46,7 @@ const Navbar = () => {
           onClick={handleItemClick}
         />
         <Menu.Item
+          className={classnames(styles.link, styles.Change, activeItem === "about us" ? styles.active : '')}
           as={Link}
           to="/AboutUs"
           name="about us"

@@ -1,3 +1,31 @@
 .links {
+    width: 100%;
+    padding: 3vh 1vw;
+}
+
+.link {
     font-family: "Raleway";
+    opacity: 0.5 !important;
+}
+
+.active {
+    background-color: red;
+}
+
+.ui.menu .item.disabled:hover {
+    cursor: default;
+    background-color: transparent !important;
+    /* color: rgba(40, 40, 40, 0.3); */
+    color: rgba(40, 40, 40, 0.3) !important;
+    pointer-events: none !important;
+}
+
+.Change:hover {
+    background-color: transparent !important;
+    opacity: 1 !important;
+}
+
+.active {
+    background-color: transparent !important;
+    opacity: 1 !important;
 }

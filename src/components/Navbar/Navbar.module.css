@@ -1,23 +1,19 @@
 .links {
     width: 100%;
-    padding: 3vh 1vw;
+    height: 10vh;
+    position: absolute;
+    padding-right: 2vw;
+    top: 0;
 }
 
 .link {
     font-family: "Raleway";
     opacity: 0.5 !important;
+    background-color: transparent !important;
 }
 
 .active {
     background-color: red;
-}
-
-.ui.menu .item.disabled:hover {
-    cursor: default;
-    background-color: transparent !important;
-    /* color: rgba(40, 40, 40, 0.3); */
-    color: rgba(40, 40, 40, 0.3) !important;
-    pointer-events: none !important;
 }
 
 .Change:hover {

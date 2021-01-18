@@ -19,9 +19,9 @@ const Homepage = () => {
           alt="Medical Image"
         />
       </div>
-      <div className={styles.require}>
+      {/*<div className={styles.require}>
         <h2>Require Assistance?</h2>
-      </div>
+      </div>*/}
     </>
   );
 };

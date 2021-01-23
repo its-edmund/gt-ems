@@ -3,6 +3,7 @@ import { Menu, Button, Card } from "semantic-ui-react";
 
 import styles from "./Homepage.module.css";
 import landingpic from "./landing_page_image.png";
+import Map from "../Map/Map";
 
 const Homepage = () => {
   return (
@@ -22,7 +23,7 @@ const Homepage = () => {
           alt="Medical Image"
         />
       </div>
-      <div className={styles.require_container}>
+      <div className={styles.container}>
         <div className={styles.require_content}>
           <div className={styles.require_text}>
             <h2 className={styles.require_text_header}>Require Assistance?</h2>
@@ -39,16 +40,30 @@ const Homepage = () => {
           <div className={styles.require_card_container}>
             <Card className={styles.require_card}>
               <Card.Content>
-                <Card.Header className={styles.require_card_header}>Content Information</Card.Header>
+                <Card.Header className={styles.require_card_header}>
+                  Content Information
+                </Card.Header>
                 <Card.Description className={styles.require_card_body}>
-                  Emergency: XXX-XXX-XXXX <br/> Non-Emergency: XXX-XXX-XXXX <br/> <br/> Address:
-                  123 Street Name Suite 001 Atlanta, GA 30332 <br/> <br/> Business Office:
-                  XXX-XXX-XXXX <br/> Business Fax: XXX-XXX-XXXX <br/> Email:
-                  example@example.com
+                  Emergency: XXX-XXX-XXXX <br /> Non-Emergency: XXX-XXX-XXXX{" "}
+                  <br /> <br /> Address: 123 Street Name Suite 001 Atlanta, GA
+                  30332 <br /> <br /> Business Office: XXX-XXX-XXXX <br />{" "}
+                  Business Fax: XXX-XXX-XXXX <br /> Email: example@example.com
                 </Card.Description>
               </Card.Content>
             </Card>
           </div>
+        </div>
+        <div className={styles.map_content}>
+          <h2 className={styles.map_text_header}>Incidence Map</h2>
+          <p className={styles.require_text_body}>
+            Nullam quis metus vel erat bibendum euismod sit amet sit amet justo.
+            Donec laoreet commodo lacus, vel tristique erat faucibus sit amet.
+            Suspendisse ante lacus, pretium eu purus at, dignissim ultrices dui.
+            Cras vel mauris tristique libero bibendum gravida a id libero.
+            Maecenas quis sollicitudin enim. Aliquam vel commodo leo, maximus
+            ultrices lectus. Vivamus sit amet molestie tellus.
+          </p>
+          <Map />
         </div>
       </div>
     </>

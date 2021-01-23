@@ -7,12 +7,28 @@
     color: #003057;
 }
 
-.require_container {
+.container {
     position: absolute;
     top: 100vh;
     width: 100vw;
     float: left;
     padding-bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.map_content {
+    width: 60vw;
+    margin: 10vh auto;
+}
+
+.map_text_header {
+    font-family: "Raleway" !important;
+    font-weight: 400;
+    color: #003057;
+    font-size: 40px;
+    text-align: center;
 }
 
 .require_content {

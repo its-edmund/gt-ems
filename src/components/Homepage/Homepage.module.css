@@ -7,10 +7,15 @@
     color: #003057;
 }
 
-.container {
+.main_container {
+    display: relative;
+}
+
+.require_container {
+    background-color: red;
     position: absolute;
-    top: 100vh;
-    width: 100vw;
+    top: 0;
+    width: 100%;
     float: left;
     padding-bottom: 10vh;
     display: flex;
@@ -34,7 +39,7 @@
 .require_content {
     position: relative;
     display: flex;
-    margin: 0 auto;
+    margin: 10vh auto;
     padding: 10px;
     width: 60vw;
 }
@@ -92,11 +97,12 @@
 .landing {
     display: flex;
     flex-direction: row;
-    position: absolute;
+    position: relative;
     top: 10vh;
     vertical-align: middle;
     width: 100vw;
     height: 90vh;
+    padding-bottom: 2.5rem;
 }
 
 .landingimg {
@@ -123,6 +129,14 @@
     font-weight: 500;
     font-size: 25px;
     color: #457b9d;
+}
+
+.footer {
+    width: 100%;
+    display: absolute;
+    bottom: 0;
+    height: 50vh;
+    background-color: #a8dadc !important;
 }
 
 .button {

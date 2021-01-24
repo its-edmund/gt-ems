@@ -4,24 +4,105 @@
     font-weight: 600;
     line-height: 1em;
     width: 100%;
+    color: #003057;
 }
 
-.require {
+.main_container {
+    display: relative;
+}
+
+.require_container {
+    background-color: red;
     position: absolute;
-    top: 100vh;
-    width: 100vw;
-    height: 100vh;
+    top: 0;
+    width: 100%;
     float: left;
+    padding-bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.map_content {
+    width: 60vw;
+    margin: 10vh auto;
+}
+
+.map_text_header {
+    font-family: "Raleway" !important;
+    font-weight: 400;
+    color: #003057;
+    font-size: 40px;
+    text-align: center;
+}
+
+.require_content {
+    position: relative;
+    display: flex;
+    margin: 10vh auto;
+    padding: 10px;
+    width: 60vw;
+}
+
+.require_text {
+    flex: 0 0 55%;
+    margin-right: 5vw;
+    text-align: center;
+}
+
+.require_text_header {
+    font-family: "Raleway" !important;
+    font-weight: 400;
+    color: #003057;
+    font-size: 40px;
+}
+
+.require_text_body {
+    font-family: "Raleway" !important;
+    font-size: 17px;
+    color: #457b9d !important;
+    font-weight: 200;
+}
+
+.require_card {
+    flex: 1;
+    width: 435px;
+    height: 100%;
+    background-color: #a8dadc !important;
+    align-content: space-around !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.require_card_header {
+    font-family: "Raleway" !important;
+    font-weight: 400 !important;
+    color: #003057 !important;
+    font-size: 25px !important;
+    text-align: center;
+}
+
+.require_card_body {
+    font-family: "Raleway" !important;
+    font-size: 17px;
+    color: #457b9d !important;
+    font-weight: 200;
+    text-align: center;
+    line-height: 1.25em;
+    position: relative;
+    top: 1em;
 }
 
 .landing {
     display: flex;
     flex-direction: row;
-    position: absolute;
+    position: relative;
     top: 10vh;
     vertical-align: middle;
     width: 100vw;
     height: 90vh;
+    padding-bottom: 2.5rem;
 }
 
 .landingimg {
@@ -44,20 +125,32 @@
 }
 
 .subtitle {
+    font-family: "Raleway";
     font-weight: 500;
     font-size: 25px;
+    color: #457b9d;
+}
+
+.footer {
+    width: 100%;
+    display: absolute;
+    bottom: 0;
+    height: 50vh;
+    background-color: #a8dadc !important;
 }
 
 .button {
+    font-family: "Raleway" !important;
     width: 10em;
-    border-radius: 65px !important;
-    background-color: #D30808 !important;
+
+    border-radius: 80px !important;
+    background-color: #6e08d3 !important;
     opacity: 57%;
     color: white !important;
     font-size: 20px !important;
 }
 
 .button:hover {
-    background-color: #D30808 !important;
+    background-color: #430482 !important;
     opacity: 70%;
 }

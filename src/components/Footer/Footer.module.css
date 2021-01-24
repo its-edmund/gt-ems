@@ -45,6 +45,18 @@
     opacity: 70%;
 }
 
+.link {
+    text-decoration: none !important;
+    font-family: 'Raleway' !important;
+    font-weight: 200 !important;
+    color: #457B9D !important;
+    transition: 0.2s;
+}
+
+.link:hover {
+    color: #70ACD1 !important;
+}
+
 .tagline {
     position: relative;
     bottom: 0;
@@ -56,7 +68,7 @@
 
 .line {
     border: 0.5px solid #457B9D;
-    opacity: 50%;
+    opacity: 35%;
     width: 90vw;
 }
 
@@ -71,6 +83,31 @@
     flex: 1;
     width: 30vw;
     margin: 0 10vw;
+    height: 100%;
+    overflow: hidden;
+}
+
+.social_media_icons_group {
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.social_media_icons {
+    color: #457B9D !important;
+    box-sizing: border-box;
+    padding: 0px;
+    float: left;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5vh;
+}
+
+.icon {
+    margin: 0 auto;
 }
 
 .content {

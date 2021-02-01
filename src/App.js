@@ -11,7 +11,7 @@ import Footer from './components/Footer/Footer'
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Navbar />
       <Switch>
         <Route exact path="/">
@@ -29,8 +29,8 @@ function App() {
         <Route exact path="/AboutUs">
           <AboutUs />
         </Route>
-        {/*<Route path="/404" component={NotFound} />
-        <Redirect from="*" to="/404" />*/}
+        <Route path="/404" component={NotFound} />
+        <Redirect from="*" to="/404" />
       </Switch>
       <Footer />
     </Router>

@@ -34,15 +34,13 @@
     width: 10em;
 
     border-radius: 80px !important;
-    background-color: #6e08d3 !important;
-    opacity: 57%;
+    background-color: #ac72e3 !important;
     color: white !important;
     font-size: 15px !important;
 }
 
 .submit_button:hover {
-    background-color: #430482 !important;
-    opacity: 70%;
+    background-color: #8c39db !important;
 }
 
 .link {
@@ -67,8 +65,7 @@
 }
 
 .line {
-    border: 0.5px solid #457B9D;
-    opacity: 35%;
+    border: 0.5px solid #69a4c9;
     width: 90vw;
 }
 

@@ -1,0 +1,90 @@
+.jumbotron {
+    position: relative;
+    top: 10vh;
+    background-color: #A8DADC;
+    width: 100%;
+    padding-left: 10vw;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.jumbotron_title {
+    font-family: 'Raleway';
+    font-size: 60px;
+    padding-bottom: 3vh;
+    color: #003057;
+}
+
+.jumbotron_subtitle {
+    font-family: 'Raleway';
+    font-size: 25px;
+    width: 45vw;
+    font-weight: 200;
+    color: #457B9D;
+    padding-bottom: 3vh;
+}
+
+.jumbotron_button {
+    font-family: "Raleway" !important;
+    width: 10em;
+
+    border-radius: 80px !important;
+    background-color: #6e08d3 !important;
+    opacity: 57%;
+    color: white !important;
+    font-size: 20px !important;
+}
+
+.jumbotron_button:hover {
+    background-color: #430482 !important;
+    opacity: 70%;
+}
+
+.learnmore {
+    position: relative;
+    font-family: 'Raleway';
+    text-align: center;
+    color: #003057;
+    font-size: 30px;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.initiatives {
+    display: table;
+    width: 70%;
+    position: static;
+    margin: auto;
+}
+
+.initiative {
+    display: table-row;
+}
+
+.initiative_text {
+    width: 60%;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.initiative_image {
+    display: table-cell;
+    text-align: right;
+}
+
+.initiative_title {
+    font-family: 'Raleway';
+    font-size: 30px;
+    color: #003057;
+}
+
+.initiative_body {
+    font-family: 'Raleway';
+    font-size: 20px;
+    color: #457B9D;
+    font-weight: 200;
+}
+
+.emergency {
+    border-radius: 10px;
+}

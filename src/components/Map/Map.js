@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ReactMapGL from 'react-map-gl'
 
 const Map = () => {
@@ -9,9 +9,8 @@ const Map = () => {
   })
 
   return (
-    <ReactMapGL 
+    <ReactMapGL
       {...viewPort}
-      mapboxApiAccessToken="pk.eyJ1IjoibXhpbiIsImEiOiJja2p3ZXdkdTcwMmozMnF0ODZseWd5ZW9wIn0._-gH8OHmTvgXIi8Rlgj5yg"
       mapStyle="mapbox://styles/mapbox/outdoors-v9"
       showZoom
       showCompass

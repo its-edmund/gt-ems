@@ -52,7 +52,7 @@ const Footer = () => {
       </div>
       <hr className={styles.line} />
       <h1 className={styles.tagline}>
-        <a target="_blank" className={styles.link} href="https://dscgt.club">
+        <a target="_blank" rel="noreferrer" className={styles.link} href="https://dscgt.club">
           Made with 💙 by DSC@GT!
         </a>
       </h1>

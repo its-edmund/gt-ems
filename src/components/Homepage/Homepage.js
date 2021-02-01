@@ -6,6 +6,14 @@ import landingpic from "../../assets/landing_page_image.png";
 import Map from "../Map/Map";
 import Footer from "../Footer/Footer";
 
+const data = [
+  {
+    "title": "",
+    "body": "Phasellus et lectus ac arcu mollis elementum id malesuada urna. Etiam pulvinar magna ut auctor dignissim. Maecenas non nulla vehicula, molestie lorem id, vestibulum lacus. Sed maximus et tortor ac sodales. Maecenas cursus nisl nunc, eget ultricies quam volutpat vel. Nunc ullamcorper mattis orci, a fringilla felis ultrices id. Morbi tincidunt elit in nunc facilisis, id auctor nisl tincidunt. Cras ultrices commodo ipsum, nec aliquet mi vehicula egestas."
+
+  },
+]
+
 const Homepage = () => {
   return (
     <>

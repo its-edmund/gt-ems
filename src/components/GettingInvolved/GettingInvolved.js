@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 import styles from './GettingInvolved.module.css'
 import emergency from '../../assets/gt-emergency.png'
@@ -46,7 +46,7 @@ const GettingInvolved = () => {
 			<h2 className={styles.open_roles_header}>Open roles</h2>
 			<div className={styles.open_roles}>
 				{roles.length === 0 ? <div className={styles.no_roles}>There aren't any roles right now. Check back later!</div> : roles.map((role) => {
-
+					return 1;
 				})}
 			</div>
 			<h2 className={styles.learnmore}>Learning more about our initiatives ✅</h2>
@@ -58,7 +58,7 @@ const GettingInvolved = () => {
 							<p className={styles.initiative_body}>{initiative.body}</p>
 						</div>
 						<div className={styles.initiative_image} >
-							<img className={styles.emergency} src={initiative.image} />
+							<img alt="GT Emergency Notification Logo" clssName={styles.emergency} src={initiative.image} />
 						</div>
 					</div>
 				))}

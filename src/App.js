@@ -49,8 +49,6 @@ function App() {
         <Route exact path="/AboutUs">
           <AboutUs />
         </Route>
-        {/*<Route path="/404" component={NotFound} />
-        <Redirect from="*" to="/404" />*/}
       </Switch>
       <Footer />
     </Router>

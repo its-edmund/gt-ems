@@ -39,6 +39,7 @@ function App() {
         {/*<Route path="/404" component={NotFound} />
         <Redirect from="*" to="/404" />*/}
       </Switch>
+      <Footer />
     </Router>
   );
 }

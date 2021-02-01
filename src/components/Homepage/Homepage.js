@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Menu, Button, Card } from "semantic-ui-react";
 
 import styles from "./Homepage.module.css";
-import landingpic from "./landing_page_image.png";
+import landingpic from "../../assets/landing_page_image.png";
 import Map from "../Map/Map";
 import Footer from "../Footer/Footer";
 
@@ -66,7 +66,6 @@ const Homepage = () => {
           </p>
           <Map />
         </div>
-        <Footer />
       </div>
     </>
   );

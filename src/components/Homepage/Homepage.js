@@ -6,21 +6,13 @@ import landingpic from "../../assets/landing_page_image.png";
 import Map from "../Map/Map";
 import Footer from "../Footer/Footer";
 
-const data = [
-  {
-    "title": "",
-    "body": "Phasellus et lectus ac arcu mollis elementum id malesuada urna. Etiam pulvinar magna ut auctor dignissim. Maecenas non nulla vehicula, molestie lorem id, vestibulum lacus. Sed maximus et tortor ac sodales. Maecenas cursus nisl nunc, eget ultricies quam volutpat vel. Nunc ullamcorper mattis orci, a fringilla felis ultrices id. Morbi tincidunt elit in nunc facilisis, id auctor nisl tincidunt. Cras ultrices commodo ipsum, nec aliquet mi vehicula egestas."
-
-  },
-]
-
 const Homepage = () => {
   return (
     <>
       <div className={styles.main_container}>
         <div className={styles.landing}>
           <div className={styles.titletext}>
-            <h1 className={styles.title}>Lorem ipsum dolor sit amet.</h1>
+            <h1 className={styles.title}>HOLD GME 🚀🚀🚀</h1>
             <h3 className={styles.subtitle}>
               Praesent congue sodales magna, vitae tincidunt tortor vehicula a.
               Ut ut velit.

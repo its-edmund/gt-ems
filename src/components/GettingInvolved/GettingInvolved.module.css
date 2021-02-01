@@ -40,6 +40,15 @@
     opacity: 70%;
 }
 
+.open_roles_header {
+    position: relative;
+    font-family: 'Raleway';
+    text-align: center;
+    color: #003057;
+    font-size: 30px;
+    padding-top: 15vh;
+}
+
 .learnmore {
     position: relative;
     font-family: 'Raleway';
@@ -47,7 +56,6 @@
     color: #003057;
     font-size: 30px;
     padding-top: 10vh;
-    padding-bottom: 10vh;
 }
 
 .initiatives {
@@ -55,6 +63,8 @@
     width: 70%;
     position: static;
     margin: auto;
+    border-collapse:separate; 
+    border-spacing: 0 5em;
 }
 
 .initiative {
@@ -74,17 +84,26 @@
 
 .initiative_title {
     font-family: 'Raleway';
-    font-size: 30px;
+    font-size: 25px;
     color: #003057;
 }
 
 .initiative_body {
     font-family: 'Raleway';
-    font-size: 20px;
+    font-size: 18px;
     color: #457B9D;
     font-weight: 200;
 }
 
 .emergency {
+    width: 80%;
     border-radius: 10px;
+}
+
+.no_roles {
+    text-align: center;
+    font-family: 'Raleway';
+    font-size: 18px;
+    color: #457B9D;
+    font-weight: 200;
 }

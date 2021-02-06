@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { Menu, Button, Card } from "semantic-ui-react";
+import React from "react";
+import { Button, Card } from "semantic-ui-react";
 
 import styles from "./Homepage.module.css";
-import landingpic from "./landing_page_image.png";
+import landingpic from "../../assets/landing_page_image.png";
 import Map from "../Map/Map";
-import Footer from "../Footer/Footer";
 
 const Homepage = () => {
   return (
@@ -22,7 +21,7 @@ const Homepage = () => {
           <img
             className={styles.landingimg}
             src={landingpic}
-            alt="Medical Image"
+            alt="Medical Background Logo"
           />
         </div>
         <div className={styles.require_content}>
@@ -66,7 +65,6 @@ const Homepage = () => {
           </p>
           <Map />
         </div>
-        <Footer />
       </div>
     </>
   );

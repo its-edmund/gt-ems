@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mxinburritos.github.io/gt-ems",
+  "homepage": "https://gt-ems.netlify.app/",
   "dependencies": {
     "@apollo/client": "^3.3.9",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://mxinburritos.github.io/gt-ems",
   "dependencies": {
+    "@apollo/client": "^3.3.9",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
@@ -16,6 +17,7 @@
     "classnames": "^2.2.6",
     "firebase": "^8.2.5",
     "gh-pages": "^3.1.0",
+    "graphql": "^15.5.0",
     "leaflet": "^1.7.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

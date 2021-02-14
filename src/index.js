@@ -7,7 +7,7 @@ import "./index.css";
 import App from "./App";
 
 const client = new ApolloClient({
-	uri: `https://graphql.contentful.com/content/v1/spaces/${REACT_APP_CONTENTFUL_SPACEID}`,
+	uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACEID}`,
 	headers: {
 		Authorization: `Bearer ${process.env.REACT_APP_CONTENTFUL_TOKEN}`,
 	},

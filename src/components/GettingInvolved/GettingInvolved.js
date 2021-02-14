@@ -3,7 +3,6 @@ import { Button } from 'semantic-ui-react';
 import { useQuery, gql } from '@apollo/client';
 
 import styles from './GettingInvolved.module.css'
-import emergency from '../../assets/gt-emergency.png'
 
 const QUERY = gql`
   query Initiatives {
@@ -51,6 +50,8 @@ const roles = [
 
 const GettingInvolved = () => {
 	const { data, errors, loading } = useQuery(QUERY);
+
+	console.log(errors);
 
 	return (
 		<>

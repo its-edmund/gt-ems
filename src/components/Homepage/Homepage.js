@@ -25,7 +25,7 @@ const HOMEPAGEQUERY = gql`
 const Homepage = () => {
   const { data, errors, loading } = useQuery(HOMEPAGEQUERY);
 
-  console.log(data);
+  console.log(errors);
 
   return (
     loading ? <></> : <>

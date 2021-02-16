@@ -5,7 +5,6 @@ import styles from "./AboutUs.module.css";
 import femaleFace from "../../assets/facefemale.png";
 import maleFace1 from "../../assets/faceMale.png";
 import maleFace2 from "../../assets/faceBeard.png";
-import { StayCurrentLandscapeSharp } from "@material-ui/icons";
 
 const AboutUs = () => {
   return (

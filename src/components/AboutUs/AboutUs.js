@@ -5,9 +5,11 @@ import styles from "./AboutUs.module.css";
 import femaleFace from "../../assets/facefemale.png";
 import maleFace1 from "../../assets/faceMale.png";
 import maleFace2 from "../../assets/faceBeard.png";
+import Layout from '../Layout';
 
 const AboutUs = () => {
   return (
+    <Layout>
     <div className={styles.container}>
       <h1 className={styles.title}>About Us</h1>
       <div className={styles.subcontainer}>
@@ -68,6 +70,7 @@ const AboutUs = () => {
       </div>
       <Button className={styles.button}>Join The Team!</Button>
     </div>
+    </Layout>
   );
 };
 

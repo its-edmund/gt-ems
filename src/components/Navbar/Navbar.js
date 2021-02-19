@@ -1,56 +1,146 @@
-import React, { useState } from "react";
-import { Menu } from "semantic-ui-react";
-import {NavLink} from 'react-router-dom'
-import classnames from 'classnames'
+/* eslint-disable no-unused-expressions */
 
-import styles from './Navbar.module.css';
+import React, { useState, useEffect } from "react";
+import { Controller, Scene } from "react-scrollmagic";
+import { Tween, Timeline } from "react-gsap";
+import {
+  Link,
+  NavLink,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import styles from "./Navbar.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import MobileNavbar from "./MobileNavbar";
+library.add(fab);
 
-const Navbar = () => {
-	const [activeItem, setActiveItem] = useState("home");
+export const Navbar = ({ color, logo, menu, social }) => {
+  const [navLinks, setNavLinks] = useState([
+    { name: "HOME", to: "/" },
+    { name: "ARTICLES", to: "/articles" },
+    { name: "ABOUT ME", to: "/about" },
+    { name: "CONTACT", to: "/contact" },
+  ]);
+  const [socialIcon, setSocialIcon] = useState([
+    {
+      name: "Linkedin",
+      url: "https://www.linkedin.com/in/nazeh-taha/",
+      icon: ["fab", "linkedin-in"],
+    },
+    {
+      name: "Facebook",
+      url: "https://www.facebook.com/nazeh200/",
+      icon: ["fab", "facebook-f"],
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/nazeh_taha/",
+      icon: ["fab", "instagram"],
+    },
+    {
+      name: "Twitter",
+      url: "http://nazehtaha.herokuapp.com/",
+      icon: ["fab", "twitter"],
+    },
+  ]);
+  const [background, setBackground] = useState("rgb(25, 25, 25)");
+  const [textColor, setTextColor] = useState("rgb(255, 255, 255)");
+  const [logoUrl, setLogoUrl] = useState("https://svgshare.com/i/KHh.svg");
+  const [width, setWidth] = useState(window.innerWidth);
+  const updateWidthAndHeight = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    menu ? setNavLinks(menu) : [];
+    color ? setBackground(color) : null;
+    logo ? setLogoUrl(logo) : null;
+    social ? setSocialIcon(social) : [];
+  }, []);
+  useEffect(() => {
+    window.addEventListener("resize", updateWidthAndHeight);
+    return () => window.removeEventListener("resize", updateWidthAndHeight);
+  });
 
-	const handleItemClick = (e, { name }) => setActiveItem(name);
+  if (width < 1150) {
+    return (
+      <MobileNavbar
+        width={width}
+        logoUrl={logoUrl}
+        background={background}
+        navLinks={navLinks}
+        socialIcon={socialIcon}
+      />
+    );
+  }
 
-	return (
-		<Menu className={styles.links} secondary>
-			<Menu.Menu position="right">
-				<Menu.Item
-          className={classnames(styles.link, styles.Change, activeItem === "home" ? styles.active : "")}
-          as={NavLink} to='/'
-					name="home"
-					active={activeItem === "home"}
-					onClick={handleItemClick}
-				/>
-				<Menu.Item
-          className={classnames(styles.link, styles.Change, activeItem === "how to get involved" ? styles.active : "")}
-          as={NavLink} to='/GettingInvolved'
-					name="how to get involved"
-					active={activeItem === "how to get involved"}
-					onClick={handleItemClick}
-				/>
-				<Menu.Item
-          className={classnames(styles.link, styles.Change, activeItem === "news and events" ? styles.active : "")}
-          as={NavLink} to='/NewsAndEvents'
-					name="news and events"
-					active={activeItem === "news and events"}
-					onClick={handleItemClick}
-				/>
-				<Menu.Item
-          className={classnames(styles.link, styles.Change, activeItem === "resources" ? styles.active : "")}
-          as={NavLink} to='/Resources'
-					name="resources"
-					active={activeItem === "resources"}
-					onClick={handleItemClick}
-				/>
-				<Menu.Item
-          className={classnames(styles.link, styles.Change, activeItem === "about us" ? styles.active : "")}
-          as={NavLink} to='/AboutUs'
-					name="about us"
-					active={activeItem === "about us"}
-					onClick={handleItemClick}
-				/>
-			</Menu.Menu>
-		</Menu>
-	);
+  return (
+    <div style={{ width: "100%", position: "fixed", zIndex: "100" }}>
+        <Controller>
+          <Scene triggerHook="onLeave" duration={300} pin>
+            {(progress) => (
+              <Timeline totalProgress={progress} paused>
+                <Tween
+                  from={{ height: "120px" }}
+                  to={{ height: "80px", background: background, color: textColor }}
+                >
+                  <div className={styles.header}>
+                    <div className={styles.navLogo}>
+                      <Link to="/">
+                        <div className="logo-container">
+                          <Timeline totalProgress={progress} paused>
+                            <Tween
+                              from={{ height: "150px" }}
+                              to={{ height: "70px" }}
+                            >
+                              {/* <img
+                                className={styles.LogoImg}
+                                src={logoUrl}
+                                alt="logo"
+                              /> */}
+                            </Tween>
+                          </Timeline>
+                        </div>
+                      </Link>
+                    </div>
+
+                    <div className={styles.navLinks}>
+                      <ul>
+                        {navLinks.map((link, i) => (
+                          <li key={i}>
+                            <NavLink
+                              exact
+                              to={link.to}
+                              activeClassName={styles.home}
+                            >
+                                {link.name}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className={styles.navSocial}>
+                      <ul>
+                        {socialIcon.map((icon, i) => (
+                          <li key={i}>
+                            <a target="_blank" href={icon.url}>
+                              <FontAwesomeIcon icon={icon.icon} />
+                            </a>
+                            <span className={styles.tooltiptext}>
+                              {icon.name}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </Tween>
+              </Timeline>
+            )}
+          </Scene>
+        </Controller>
+    </div>
+  );
 };
-
-export default Navbar;

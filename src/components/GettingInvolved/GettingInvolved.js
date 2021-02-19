@@ -3,6 +3,7 @@ import { Button } from 'semantic-ui-react';
 import { useQuery, gql } from '@apollo/client';
 
 import styles from './GettingInvolved.module.css'
+import Layout from '../Layout'
 
 const QUERY = gql`
   query Initiatives {
@@ -54,7 +55,7 @@ const GettingInvolved = () => {
 	console.log(errors);
 
 	return (
-		<>
+		<Layout>
 			<div className={styles.jumbotron}>
 				<h1 className={styles.jumbotron_title}>Join the GT EMS Community!</h1>
 				<h2 className={styles.jumbotron_subtitle}>Praesent congue sodales magna, vitae tincidunt tortor vehicula a. Ut ut velit. Praesent congue sodales magna, vitae tincidunt tortor vehicula a. Ut ut velit.</h2>
@@ -80,7 +81,7 @@ const GettingInvolved = () => {
 					</div>
 				))}
 			</div>
-		</>
+		</Layout>
 	)
 }
 

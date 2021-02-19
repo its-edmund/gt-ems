@@ -1,27 +1,148 @@
-.links {
-    width: 100%;
-    height: 10vh;
-    position: absolute;
-    padding-right: 2vw;
-    top: 0;
+.header {
+  zoom: 75%;
+  width: 100%;
+  z-index: 12;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 20vh;
 }
 
-.link {
-    font-family: "Raleway";
-    opacity: 0.5 !important;
-    background-color: transparent !important;
+.navSocial a {
+  text-decoration: none;
+  color: black;
+  font-size: 21px;
 }
 
-.active {
-    background-color: red;
+.navSocial {
+  width: 15vw;
 }
 
-.Change:hover {
-    background-color: transparent !important;
-    opacity: 1 !important;
+.navSocial svg {
+  display: block;
 }
 
-.active {
-    background-color: transparent !important;
-    opacity: 1 !important;
+.navSocial ul {
+  margin: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  list-style: none;
+  float: right;
+}
+
+.navLogo {
+  width: 50vw;
+}
+
+.LogoImg {
+  height: 200px;
+}
+
+.navLinks {
+  width: 50vw;
+}
+
+.navLinks ul {
+  margin: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+.navLinks li {
+  display: block;
+  width: 25%;
+  margin: 0 5px;
+  text-align: center;
+}
+
+.navLinks a {
+  text-decoration: none;
+  display: block;
+  color: rgba(0,0,0,0.5);
+  padding: 8px 0;
+  letter-spacing: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navLinks a:hover {
+  text-decoration: none;
+  color: rgba(0,0,0,1);
+}
+
+.navSocial {
+  width: 15vw;
+}
+
+.navSocial ul {
+  margin: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  list-style: none;
+  float: right;
+}
+
+.navSocial li {
+  height: 38px;
+  width: 38px;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-left: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltiptext {
+  opacity: 0;
+  width: 120px;
+  background-color: #303030;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 140%;
+  right: -125%;
+  margin-left: -60px;
+}
+
+.tooltiptext:after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #303030 transparent;
+}
+
+.navSocial li:hover {
+  background-color: white;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+}
+
+.navSocial li:hover a {
+  color: #191919;
+}
+
+.navSocial li:hover .tooltiptext {
+  opacity: 0.8;
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+}
+
+.home {
+  color: red;
 }

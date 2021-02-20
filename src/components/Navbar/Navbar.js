@@ -113,7 +113,7 @@ export const Navbar = ({ color, logo, menu, social }) => {
                             <NavLink
                               exact
                               to={link.to}
-                              activeClassName={styles.home}
+                              activeStyle={{color: 'rgba(0,0,0,1)'}}
                             >
                                 {link.name}
                             </NavLink>

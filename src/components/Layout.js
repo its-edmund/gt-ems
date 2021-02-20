@@ -10,7 +10,7 @@ function Layout({ children }) {
       <Navbar menu={[
         { name: "Home", to: "/" },
         { name: "Getting Involved", to: "/GettingInvolved" },
-        { name: "News and Events", to: "/NewsAndEvents" },
+        { name: "News & Events", to: "/NewsAndEvents" },
         { name: "Resources", to: "/Resources" },
         { name: "About Us", to: "/AboutUs"}
       ]}

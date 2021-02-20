@@ -5,6 +5,7 @@ import { useQuery, gql } from '@apollo/client';
 import styles from "./Homepage.module.css";
 import landingpic from "../../assets/landing_page_image.png";
 import Map from "../Map/Map";
+import Layout from '../Layout'
 
 const HOMEPAGEQUERY = gql`
   query HomepageText {
@@ -28,7 +29,8 @@ const Homepage = () => {
   console.log(errors);
 
   return (
-    loading ? <></> : <>
+    loading ? <div className={styles.blank}></div> :
+    <Layout>
       <div className={styles.main_container}>
         <div className={styles.landing}>
           <div className={styles.titletext}>
@@ -75,7 +77,7 @@ const Homepage = () => {
           <Map />
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

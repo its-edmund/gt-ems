@@ -14,7 +14,6 @@
 .require_container {
     background-color: red;
     position: absolute;
-    top: 0;
     width: 100%;
     float: left;
     padding-bottom: 10vh;
@@ -98,7 +97,6 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    top: 10vh;
     vertical-align: middle;
     width: 100vw;
     height: 90vh;
@@ -110,7 +108,7 @@
     object-fit: cover;
     width: 50vw;
     height: 100%;
-    top: -5%;
+    top: -10%;
     left: 50vw;
 }
 
@@ -120,7 +118,7 @@
     position: relative;
     width: 40vw;
     height: 50%;
-    top: 20%;
+    top: 15%;
     left: 10vw;
 }
 
@@ -137,6 +135,10 @@
     bottom: 0;
     height: 50vh;
     background-color: #a8dadc !important;
+}
+
+.blank {
+  height: 100vh;
 }
 
 .button {

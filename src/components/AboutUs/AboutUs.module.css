@@ -1,11 +1,10 @@
 .container {
   text-align: center;
-  top: 10vh;
-  position: relative;
   width: 100%;
 }
 
 .title {
+  font-family: 'Raleway';
   font-size: 40px;
 }
 

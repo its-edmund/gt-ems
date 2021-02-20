@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { Link, BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TweenMax, Power3 } from "gsap";
@@ -14,7 +14,7 @@ const MobileNavbar = ({ width, logoUrl, background, navLinks, socialIcon }) => {
   const [click, setClick] = useState(false);
   const socialLinks = socialIcon.map((icon, index) => (
     <li key={index}>
-      <a target="_blank" href={icon.url}>
+      <a target="_blank" rel="noreferrer" href={icon.url}>
         <FontAwesomeIcon icon={icon.icon} />
       </a>
     </li>

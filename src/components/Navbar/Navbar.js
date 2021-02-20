@@ -6,9 +6,6 @@ import { Tween, Timeline } from "react-gsap";
 import {
   Link,
   NavLink,
-  BrowserRouter as Router,
-  Switch,
-  Route,
 } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -47,7 +44,6 @@ export const Navbar = ({ color, logo, menu, social }) => {
     },
   ]);
   const [background, setBackground] = useState("rgb(25, 25, 25)");
-  const [textColor, setTextColor] = useState("rgb(255, 255, 255)");
   const [logoUrl, setLogoUrl] = useState("https://svgshare.com/i/KHh.svg");
   const [width, setWidth] = useState(window.innerWidth);
   const updateWidthAndHeight = () => {
@@ -58,7 +54,7 @@ export const Navbar = ({ color, logo, menu, social }) => {
     color ? setBackground(color) : null;
     logo ? setLogoUrl(logo) : null;
     social ? setSocialIcon(social) : [];
-  }, []);
+  }, [menu, color, logo, social]);
   useEffect(() => {
     window.addEventListener("resize", updateWidthAndHeight);
     return () => window.removeEventListener("resize", updateWidthAndHeight);
@@ -84,7 +80,7 @@ export const Navbar = ({ color, logo, menu, social }) => {
               <Timeline totalProgress={progress} paused>
                 <Tween
                   from={{ height: "120px" }}
-                  to={{ height: "80px", background: background, color: textColor }}
+                  to={{ height: "80px", background: background }}
                 >
                   <div className={styles.header}>
                     <div className={styles.navLogo}>
@@ -125,7 +121,7 @@ export const Navbar = ({ color, logo, menu, social }) => {
                       <ul>
                         {socialIcon.map((icon, i) => (
                           <li key={i}>
-                            <a target="_blank" href={icon.url}>
+                            <a target="_blank" rel="noreferrer" href={icon.url}>
                               <FontAwesomeIcon icon={icon.icon} />
                             </a>
                             <span className={styles.tooltiptext}>

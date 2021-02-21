@@ -1,15 +1,15 @@
 import React from "react";
 import { Button, Card } from "semantic-ui-react";
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql } from "@apollo/client";
 
 import styles from "./Homepage.module.css";
 import landingpic from "../../assets/landing_page_image.png";
 import Map from "../Map/Map";
-import Layout from '../Layout'
+import Layout from "../Layout";
 
 const HOMEPAGEQUERY = gql`
   query HomepageText {
-    homepageText(id: "4tuLaiJsGbSYTlZVcUz8mj"){
+    homepageText(id: "4tuLaiJsGbSYTlZVcUz8mj") {
       jumbotronTitle
       jumbotronSubtitle
       jumbotronButtonText
@@ -21,15 +21,16 @@ const HOMEPAGEQUERY = gql`
       paragraphTwoBody
     }
   }
-`
+`;
 
 const Homepage = () => {
   const { data, errors, loading } = useQuery(HOMEPAGEQUERY);
 
   console.log(errors);
 
-  return (
-    loading ? <div className={styles.blank}></div> :
+  return loading ? (
+    <div className={styles.blank}></div>
+  ) : (
     <Layout>
       <div className={styles.main_container}>
         <div className={styles.landing}>
@@ -50,7 +51,9 @@ const Homepage = () => {
         </div>
         <div className={styles.require_content}>
           <div className={styles.require_text}>
-            <h2 className={styles.require_text_header}>{ data.homepageText.paragraphOneTitle }</h2>
+            <h2 className={styles.require_text_header}>
+              {data.homepageText.paragraphOneTitle}
+            </h2>
             <p className={styles.require_text_body}>
               {data.homepageText.paragraphOneBody}
             </p>
@@ -70,7 +73,9 @@ const Homepage = () => {
           </div>
         </div>
         <div className={styles.map_content}>
-          <h2 className={styles.map_text_header}>{ data.homepageText.paragraphTwoTitle}</h2>
+          <h2 className={styles.map_text_header}>
+            {data.homepageText.paragraphTwoTitle}
+          </h2>
           <p className={styles.require_text_body}>
             {data.homepageText.paragraphTwoBody}
           </p>

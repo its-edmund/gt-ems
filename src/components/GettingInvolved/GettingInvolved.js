@@ -1,9 +1,11 @@
-import React from 'react';
-import { Button } from 'semantic-ui-react';
-import { useQuery, gql } from '@apollo/client';
+import React from "react";
+import { Button } from "semantic-ui-react";
+import { useQuery, gql } from "@apollo/client";
 
-import styles from './GettingInvolved.module.css'
-import Layout from '../Layout'
+import styles from "./GettingInvolved.module.css";
+import Layout from "../Layout";
+
+import RoleCard from "./RoleCard/RoleCard";
 
 const QUERY = gql`
   query Initiatives {
@@ -16,7 +18,7 @@ const QUERY = gql`
       }
     }
   }
-`
+`;
 
 // const data = [
 // 	{
@@ -45,44 +47,65 @@ const QUERY = gql`
 // 	},
 // ]
 
-const roles = [
-
-]
+const roles = [];
 
 const GettingInvolved = () => {
-	const { data, errors, loading } = useQuery(QUERY);
+  const { data, errors, loading } = useQuery(QUERY);
 
-	console.log(errors);
+  console.log(errors);
 
-	return (
-		<Layout>
-			<div className={styles.jumbotron}>
-				<h1 className={styles.jumbotron_title}>Join the GT EMS Community!</h1>
-				<h2 className={styles.jumbotron_subtitle}>Praesent congue sodales magna, vitae tincidunt tortor vehicula a. Ut ut velit. Praesent congue sodales magna, vitae tincidunt tortor vehicula a. Ut ut velit.</h2>
-				<Button className={styles.jumbotron_button}>Sed In.</Button>
-			</div>
-			<h2 className={styles.open_roles_header}>Open roles</h2>
-			<div className={styles.open_roles}>
-				{roles.length === 0 ? <div className={styles.no_roles}>There aren't any roles right now. Check back later!</div> : roles.map((role) => {
-					return 1;
-				})}
-			</div>
-			<h2 className={styles.learnmore}>Learning more about our initiatives ✅</h2>
-			<div className={styles.initiatives}>
-				{loading ? <div className={styles.no_roles}>Loading Data...</div> : data.initiativeCollection.items.map((initiative, i) => (
-					<div className={styles.initiative}>
-						<div className={styles.initiative_text}>
-							<h2 className={styles.initiative_title}>{"Initiative " + (i + 1) + ": " + initiative.title}</h2>
-							<p className={styles.initiative_body}>{initiative.summary}</p>
-						</div>
-						<div className={styles.initiative_image} >
-							<img alt="GT Emergency Notification Logo" clssName={styles.emergency} src={initiative.image} />
-						</div>
-					</div>
-				))}
-			</div>
-		</Layout>
-	)
-}
+  return (
+    <Layout>
+      <div className={styles.jumbotron}>
+        <h1 className={styles.jumbotron_title}>Join the GT EMS Community!</h1>
+        <h2 className={styles.jumbotron_subtitle}>
+          Praesent congue sodales magna, vitae tincidunt tortor vehicula a. Ut
+          ut velit. Praesent congue sodales magna, vitae tincidunt tortor
+          vehicula a. Ut ut velit.
+        </h2>
+        <Button className={styles.jumbotron_button}>Sed In.</Button>
+      </div>
+      <h2 className={styles.open_roles_header}>Open roles</h2>
+      <div className={styles.open_roles}>
+        {/* {roles.length === 0 ? (
+          <div className={styles.no_roles}>
+            There aren't any roles right now. Check back later!
+          </div>
+        ) : (
+          roles.map((role) => {
+            return 1;
+          })
+        )} */}
+        <RoleCard />
+      </div>
+      <h2 className={styles.learnmore}>
+        Learning more about our initiatives ✅
+      </h2>
+      <div className={styles.initiatives}>
+        {loading ? (
+          <div className={styles.no_roles}>Loading Data...</div>
+        ) : (
+          data.initiativeCollection.items.map((initiative, i) => (
+            <div className={styles.initiative}>
+              <div className={styles.initiative_text}>
+                <h2 className={styles.initiative_title}>
+                  {"Initiative " + (i + 1) + ": " + initiative.title}
+                </h2>
+                <p className={styles.initiative_body}>{initiative.summary}</p>
+              </div>
+              <div className={styles.initiative_image}>
+                <img
+                  alt="GT Emergency Notification Logo"
+                  clssName={styles.emergency}
+                  src={initiative.image}
+                />
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+    </Layout>
+  );
+};
 
 export default GettingInvolved;

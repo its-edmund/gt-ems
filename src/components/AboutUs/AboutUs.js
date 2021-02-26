@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
+import { useQuery, gql } from '@apollo/client';
 
 import styles from "./AboutUs.module.css";
 import femaleFace from "../../assets/facefemale.png";
@@ -7,45 +8,66 @@ import maleFace1 from "../../assets/faceMale.png";
 import maleFace2 from "../../assets/faceBeard.png";
 import Layout from '../Layout';
 
+const QUERY = gql`
+  query AboutUsTexts {
+    aboutUsTextCollection {
+      items {
+        title
+        paragraph
+      }
+    }
+  }
+`
+
+const PEOPLE_QUERY = gql`
+  query People {
+    personCollection {
+      items {
+        profilePicture {
+          title
+          description
+          contentType
+          fileName
+          size
+          url
+          width
+          height
+        }
+        name
+        position
+        biography
+      }
+    }
+  }
+`
+
 const AboutUs = () => {
+  const { data, errors, loading } = useQuery(QUERY);
+  console.log(errors);
+  const { peopleData, peopleErrors, loadingPeople } = useQuery(PEOPLE_QUERY);
+  console.log(peopleErrors);
   return (
     <Layout>
     <div className={styles.container}>
       <h1 className={styles.title}>About Us</h1>
-      <div className={styles.subcontainer}>
-        <h3 className={styles.header}>Who Are We</h3>
-        <p className={styles.body}>
-          Fusce ullamcorper porttitor orci non malesuada. Nunc molestie metus in
-          aliquam vulputate. Phasellus tempor mi at dui mattis, non pellentesque
-          nunc lacinia. Morbi feugiat, mauris quis congue blandit, eros odio
-          varius sapien, vitae hendrerit dui nibh in leo. Vivamus luctus, nibh
-          id finibus blandit, turpis nisi elementum felis, vel pharetra orci
-          massa ac leo. Vestibulum tempor urna ligula, id interdum felis laoreet
-          eu. Curabitur facilisis elit non mi molestie, in suscipit sem mollis.
-        </p>
-        <h3 className={styles.header}>Our Mission</h3>
-        <p className={styles.body}>
-          Suspendisse dictum malesuada augue. Etiam ut facilisis ante. Nunc
-          venenatis justo quis suscipit luctus. Vestibulum fermentum ornare
-          tellus, facilisis porttitor mi. Pellentesque pretium lacinia mi id
-          consectetur. Cras tempus est ut blandit auctor. Ut eros leo, mattis
-          fringilla leo sed, suscipit congue ipsum. Curabitur urna velit,
-          viverra id lectus in, dignissim elementum enim. Sed luctus vulputate
-          justo eget viverra. Etiam rutrum velit et arcu lobortis, finibus
-          feugiat risus suscipit. Mauris tincidunt aliquet ex, nec finibus urna
-          convallis sit amet. Ut vel leo eu turpis varius iaculis quis non ex.
-          In sit amet odio ut est finibus mattis. Suspendisse pellentesque
-          tortor.
-        </p>
-        <h3 className={styles.header}>Our Mission</h3>
-        <p className={styles.body}>
-          Vivamus suscipit leo sed mi tempus, in eleifend diam varius. Nulla
-          molestie iaculis tristique. Morbi maximus consequat velit a pulvinar.
-          Sed blandit dignissim orci. Nunc rhoncus malesuada lectus. Fusce nec
-          posuere sem. Donec faucibus sapien at orci vehicula maximus.
-        </p>
-      </div>
-      <div className={styles.profiles}>
+      {loading ? <div className={styles.no_roles}>Loading Data...</div> : data.aboutUsTextCollection.items.map((section) => (
+          <div className={styles.subcontainer}>
+            <h3 className={styles.header}>{section.title}</h3>
+            <p className={styles.body}>{section.paragraph}</p>
+          </div>
+        ))}
+      {loadingPeople ? <div className={styles.no_roles}>Loading Data...</div> : peopleData.personCollection.items.map((person) => (
+        <div className={styles.profiles}>
+          <div className={styles.profile}>
+          <img alt="person face" clssName={styles.faces} src={person.profilePicture} />
+            <div>
+              <h4 className={styles.profile_header}>person.position</h4>
+              <p className={styles.profile_name}>person.name</p>
+            </div>
+          </div>
+        </div>
+      ))}
+      {/* <div className={styles.profiles}>
         <div className={styles.profile}>
           <img className={styles.faces} src={femaleFace} alt="Female Face" />
           <div>
@@ -67,7 +89,7 @@ const AboutUs = () => {
             <p className={styles.profile_name}>Ryan Lopez</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <Button className={styles.button}>Join The Team!</Button>
     </div>
     </Layout>

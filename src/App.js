@@ -1,11 +1,11 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Homepage from "./components/Homepage/Homepage";
-import NewsAndEvents from "./components/NewsAndEvents/NewsAndEvents";
-import GettingInvolved from "./components/GettingInvolved/GettingInvolved";
-import Resources from "./components/Resources/Resources";
-import AboutUs from "./components/AboutUs/AboutUs";
+import Homepage from './components/Homepage/Homepage';
+import NewsAndEvents from './components/NewsAndEvents/NewsAndEvents';
+import GettingInvolved from './components/GettingInvolved/GettingInvolved';
+import Resources from './components/Resources/Resources';
+import AboutUs from './components/AboutUs/AboutUs';
 
 function App() {
   return (

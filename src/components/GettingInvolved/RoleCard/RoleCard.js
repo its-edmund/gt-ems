@@ -1,7 +1,7 @@
-import React from "react";
-import { Button, Card } from "semantic-ui-react";
+import React from 'react';
+import { Button, Card } from 'semantic-ui-react';
 
-import styles from "./RoleCard.module.css";
+import styles from './RoleCard.module.css';
 
 const RoleCard = () => {
   return (

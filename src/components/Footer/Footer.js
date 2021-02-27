@@ -1,14 +1,14 @@
-import React from "react";
-import { Button, Form, TextArea } from "semantic-ui-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import { Button, Form, TextArea } from 'semantic-ui-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookF,
   faInstagram,
   faLinkedin,
   faSlack,
-} from "@fortawesome/free-brands-svg-icons";
+} from '@fortawesome/free-brands-svg-icons';
 
-import styles from "./Footer.module.css";
+import styles from './Footer.module.css';
 
 const Footer = () => {
   return (

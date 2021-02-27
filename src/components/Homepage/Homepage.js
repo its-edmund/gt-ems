@@ -1,11 +1,11 @@
-import React from "react";
-import { Button, Card } from "semantic-ui-react";
-import { useQuery, gql } from "@apollo/client";
+import React from 'react';
+import { Button, Card } from 'semantic-ui-react';
+import { useQuery, gql } from '@apollo/client';
 
-import styles from "./Homepage.module.css";
-import landingpic from "../../assets/landing_page_image.png";
-import Map from "../Map/Map";
-import Layout from "../Layout";
+import styles from './Homepage.module.css';
+import landingpic from '../../assets/landing_page_image.png';
+import Map from '../Map/Map';
+import Layout from '../Layout';
 
 const HOMEPAGEQUERY = gql`
   query HomepageText {

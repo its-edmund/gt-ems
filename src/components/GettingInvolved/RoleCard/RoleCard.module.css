@@ -1,0 +1,49 @@
+.role_card_container {
+  width: 450px;
+  height: 350px;
+  background: #a8dadc !important;
+  border-radius: 9px;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 3px;
+}
+
+.role_card_header {
+  font-family: "Raleway" !important;
+  font-weight: bold !important;
+  color: #003057 !important;
+  font-size: 25px !important;
+  text-align: left;
+  margin-top: 25px !important;
+  margin-bottom: 25px;
+}
+
+.role_card_desc {
+  font-family: Raleway;
+  font-style: normal;
+  font-size: 14px;
+  margin-bottom: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.role_card_button {
+  font-family: "Raleway" !important;
+  width: 10em;
+
+  border-radius: 80px !important;
+  background-color: #ac72e3 !important;
+  color: white !important;
+  font-size: 15px !important;
+}
+
+.role_card_button_container {
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}

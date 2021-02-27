@@ -1,11 +1,11 @@
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { TweenMax, Power3 } from "gsap";
-import styles from "./MobileNavbar.module.css";
+import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TweenMax, Power3 } from 'gsap';
+import styles from './MobileNavbar.module.css';
 
 library.add(fab, faBars);
 
@@ -30,45 +30,45 @@ const MobileNavbar = ({ width, logoUrl, background, navLinks, socialIcon }) => {
   };
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
-        <div
-          className={styles.MoNavContainer}
-          style={{ background: background }}
-        >
-          <div className={styles.mobileNav} style={{ background: background }}>
-            <div className={styles.navBars}>
-              <FontAwesomeIcon icon={faBars} onClick={handelExpand} />
-            </div>
-            <div className={styles.MoNavLogo}>
-              <img src={logoUrl} alt="logo" />
-            </div>
-
-            <div className={styles.MoNavSocial}>
-              {width > 700 ? <ul>{socialLinks}</ul> : null}
-            </div>
+    <div style={{ height: '100vh', width: '100%' }}>
+      <div
+        className={styles.MoNavContainer}
+        style={{ background: background }}
+      >
+        <div className={styles.mobileNav} style={{ background: background }}>
+          <div className={styles.navBars}>
+            <FontAwesomeIcon icon={faBars} onClick={handelExpand} />
           </div>
-          <div
-            className={styles.MoNavLinks}
-            ref={(el) => {
-              nav = el;
-            }}
-          >
-            <ul>
-              {navLinks.map((link, i) => (
-                <li key={i}>
-                  <Link to={link.to}>{link.name}</Link>
-                </li>
-              ))}
-            </ul>
-            {width < 700 ? (
-              <div className={styles.mobileNavII}>
-                <div className={styles.MoNavSocialII}>
-                  <ul>{socialLinks}</ul>
-                </div>
-              </div>
-            ) : null}
+          <div className={styles.MoNavLogo}>
+            <img src={logoUrl} alt="logo" />
+          </div>
+
+          <div className={styles.MoNavSocial}>
+            {width > 700 ? <ul>{socialLinks}</ul> : null}
           </div>
         </div>
+        <div
+          className={styles.MoNavLinks}
+          ref={(el) => {
+            nav = el;
+          }}
+        >
+          <ul>
+            {navLinks.map((link, i) => (
+              <li key={i}>
+                <Link to={link.to}>{link.name}</Link>
+              </li>
+            ))}
+          </ul>
+          {width < 700 ? (
+            <div className={styles.mobileNavII}>
+              <div className={styles.MoNavSocialII}>
+                <ul>{socialLinks}</ul>
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 };

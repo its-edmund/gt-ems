@@ -1,4 +1,5 @@
 # Georgia Tech EMS Website
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c92e0b08-4598-4e1e-8ff6-839af847ba01/deploy-status)](https://app.netlify.com/sites/gt-ems/deploys)
 Repository for the GT EMS Website
 ## Development
 

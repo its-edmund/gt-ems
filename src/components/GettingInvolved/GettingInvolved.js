@@ -17,6 +17,14 @@ const QUERY = gql`
         article
       }
     }
+    roleCollection {
+      items {
+        title
+        description
+        requirements
+        formUrl
+      }
+    }
   }
 `;
 
@@ -35,16 +43,20 @@ const GettingInvolved = () => {
       </div>
       <h2 className={styles.open_roles_header}>Open roles</h2>
       <div className={styles.open_roles}>
-        {/* {roles.length === 0 ? (
-          <div className={styles.no_roles}>
-            There aren't any roles right now. Check back later!
-          </div>
+        {loading ? (
+          <div className={styles.no_roles}>Loading Data...</div>
         ) : (
-          roles.map((role) => {
-            return 1;
+          data.roleCollection.items.map(role => {
+            return (
+              <RoleCard
+                position={role.title}
+                pos_desc={role.description}
+                button_url={role.formUrl}
+                req_desc={role.requirements}
+              />
+            );
           })
-        )} */}
-        <RoleCard />
+        )}
       </div>
       <h2 className={styles.learnmore}>Learning more about our initiatives ✅</h2>
       <div className={styles.initiatives}>

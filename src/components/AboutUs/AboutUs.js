@@ -43,8 +43,8 @@ const AboutUs = () => {
         {loading ? (
           <div className={styles.no_roles}>Loading Data...</div>
         ) : (
-          data.aboutUsTextCollection.items.map((section) => (
-            <div className={styles.subcontainer}>
+          data.aboutUsTextCollection.items.map((section, i) => (
+            <div className={styles.subcontainer} key={i}>
               <h3 className={styles.header}>{section.title}</h3>
               <p className={styles.body}>{section.paragraph}</p>
             </div>
@@ -54,13 +54,9 @@ const AboutUs = () => {
           {loading ? (
             <div className={styles.no_roles}>Loading Data...</div>
           ) : (
-            data.personCollection.items.map((person) => (
-              <div className={styles.profile}>
-                <img
-                  alt="person face"
-                  className={styles.faces}
-                  src={person.profilePicture.url}
-                />
+            data.personCollection.items.map((person, i) => (
+              <div className={styles.profile} key={i}>
+                <img alt="person face" className={styles.faces} src={person.profilePicture.url} />
                 <div>
                   <h4 className={styles.profile_header}>{person.position}</h4>
                   <p className={styles.profile_name}>{person.name}</p>

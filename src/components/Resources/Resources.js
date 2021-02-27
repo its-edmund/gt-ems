@@ -37,7 +37,7 @@ const Resources = () => {
             <div className={styles.no_roles}>Loading Data...</div>
           ) : (
             data.quickLinkCollection.items.map((quickLink, i) => (
-              <div className={styles.quick_link}>
+              <div className={styles.quick_link} key={i}>
                 <div className={styles.quick_link_text}>
                   <a
                     style={{ textDecoration: 'none' }}

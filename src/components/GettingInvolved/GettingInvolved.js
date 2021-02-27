@@ -28,9 +28,8 @@ const GettingInvolved = () => {
       <div className={styles.jumbotron}>
         <h1 className={styles.jumbotron_title}>Join the GT EMS Community!</h1>
         <h2 className={styles.jumbotron_subtitle}>
-          Praesent congue sodales magna, vitae tincidunt tortor vehicula a. Ut
-          ut velit. Praesent congue sodales magna, vitae tincidunt tortor
-          vehicula a. Ut ut velit.
+          Praesent congue sodales magna, vitae tincidunt tortor vehicula a. Ut ut velit. Praesent
+          congue sodales magna, vitae tincidunt tortor vehicula a. Ut ut velit.
         </h2>
         <Button className={styles.jumbotron_button}>Sed In.</Button>
       </div>
@@ -47,15 +46,13 @@ const GettingInvolved = () => {
         )} */}
         <RoleCard />
       </div>
-      <h2 className={styles.learnmore}>
-        Learning more about our initiatives ✅
-      </h2>
+      <h2 className={styles.learnmore}>Learning more about our initiatives ✅</h2>
       <div className={styles.initiatives}>
         {loading ? (
           <div className={styles.no_roles}>Loading Data...</div>
         ) : (
           data.initiativeCollection.items.map((initiative, i) => (
-            <div className={styles.initiative}>
+            <div className={styles.initiative} key={i}>
               <div className={styles.initiative_text}>
                 <h2 className={styles.initiative_title}>
                   {'Initiative ' + (i + 1) + ': ' + initiative.title}

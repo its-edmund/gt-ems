@@ -13,6 +13,7 @@
   font-size: 17px;
   color: #457b9d !important;
   font-weight: 200;
+  padding-bottom: 3vh;
 }
 
 .header {
@@ -34,7 +35,7 @@
 .profiles {
   display: table;
   width: 60vw;
-  margin: 10vh auto;
+  margin: 3vh auto;
   /* border-spacing: 100px; */
 }
 
@@ -69,4 +70,12 @@
 
 .button:hover {
   background-color: #8c39db !important;
+}
+
+.no_roles {
+  text-align: center;
+  font-family: 'Raleway';
+  font-size: 18px;
+  color: #457B9D;
+  font-weight: 200;
 }

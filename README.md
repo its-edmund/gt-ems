@@ -1,70 +1,37 @@
-# Getting Started with Create React App
-enzo
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Georgia Tech EMS Website
+Repository for the GT EMS Website
+## Development
 
-## Available Scripts
+### Setup
 
-In the project directory, you can run:
+1. Run `yarn install`
+2. Add `.env` file into root directory and ask me for environment variables.
+3. Run `yarn start`
+4. React will run a development server at `localhost:3000`, complete with hot reloading
 
-### `yarn start`
+### Commands
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- `yarn start` - starts the development server at `localhost:3000`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Other Notes
 
-### `yarn test`
+- Use `[NAME]/[ISSUE_NUMBER]-[SHORT_DESCRIPTION]` to label your feature branches
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Commit messages should follow format from [this page](https://www.conventionalcommits.org/en/v1.0.0/).
 
-### `yarn build`
+- Set up "Format on Save" on VSCode to save time
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Run lint often
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This repository is set up with [Netlify](https://www.netlify.com/), which creates preview deployments on every PR and deploys to the [main deployment site](https://gt-ems.netlify.app/) on pushes to `main`.
 
-### `yarn eject`
+## Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React.js - frontend components
+- GraphQL - API Calls
+- Contentful - content management
+- eslint - linting
+- prettier - formatting
+- yarn - package management

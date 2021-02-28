@@ -1,127 +1,51 @@
-/* eslint-disable no-unused-expressions */
+import React, { useState } from 'react';
+import { Box, Stack, Flex } from '@chakra-ui/react';
+import Logo from './Logo';
 
-import React, { useState, useEffect } from 'react';
-import { Controller, Scene } from 'react-scrollmagic';
-import { Tween, Timeline } from 'react-gsap';
-import { Link, NavLink } from 'react-router-dom';
-import styles from './Navbar.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import MobileNavbar from './MobileNavbar';
-library.add(fab);
+import MenuToggle from './MenuToggle';
+import MenuItem from './MenuItem';
 
-export const Navbar = ({ color, logo, menu, social }) => {
-  const [navLinks, setNavLinks] = useState([
-    { name: 'HOME', to: '/' },
-    { name: 'ARTICLES', to: '/articles' },
-    { name: 'ABOUT ME', to: '/about' },
-    { name: 'CONTACT', to: '/contact' },
-  ]);
-  const [socialIcon, setSocialIcon] = useState([
-    {
-      name: 'Linkedin',
-      url: '#',
-      icon: ['fab', 'linkedin-in'],
-    },
-    {
-      name: 'Facebook',
-      url: '#',
-      icon: ['fab', 'facebook-f'],
-    },
-    {
-      name: 'Instagram',
-      url: '#',
-      icon: ['fab', 'instagram'],
-    },
-    {
-      name: 'Twitter',
-      url: '#',
-      icon: ['fab', 'twitter'],
-    },
-  ]);
-  const [background, setBackground] = useState('rgb(25, 25, 25)');
-  const [logoUrl, setLogoUrl] = useState('https://svgshare.com/i/KHh.svg');
-  const [width, setWidth] = useState(window.innerWidth);
-  const updateWidthAndHeight = () => {
-    setWidth(window.innerWidth);
+const Navbar = props => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
   };
-  useEffect(() => {
-    menu ? setNavLinks(menu) : [];
-    color ? setBackground(color) : null;
-    logo ? setLogoUrl(logo) : null;
-    social ? setSocialIcon(social) : [];
-  }, [menu, color, logo, social]);
-  useEffect(() => {
-    window.addEventListener('resize', updateWidthAndHeight);
-    return () => window.removeEventListener('resize', updateWidthAndHeight);
-  });
-
-  if (width < 1150) {
-    return (
-      <MobileNavbar
-        width={width}
-        logoUrl={logoUrl}
-        background={background}
-        navLinks={navLinks}
-        socialIcon={socialIcon}
-      />
-    );
-  }
 
   return (
-    <div style={{ width: '100%', position: 'fixed', zIndex: '100' }}>
-      <Controller>
-        <Scene triggerHook="onLeave" duration={300} pin>
-          {progress => (
-            <Timeline totalProgress={progress} paused>
-              <Tween from={{ height: '120px' }} to={{ height: '80px', background: background }}>
-                <div className={styles.header}>
-                  <div className={styles.navLogo}>
-                    <Link to="/">
-                      <div className="logo-container">
-                        <Timeline totalProgress={progress} paused>
-                          <Tween from={{ height: '150px' }} to={{ height: '70px' }}>
-                            {/* <img
-                                className={styles.LogoImg}
-                                src={logoUrl}
-                                alt="logo"
-                              /> */}
-                          </Tween>
-                        </Timeline>
-                      </div>
-                    </Link>
-                  </div>
-
-                  <div className={styles.navLinks}>
-                    <ul>
-                      {navLinks.map((link, i) => (
-                        <li key={i}>
-                          <NavLink exact to={link.to} activeStyle={{ color: 'rgba(0,0,0,1)' }}>
-                            {link.name}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className={styles.navSocial}>
-                    <ul>
-                      {socialIcon.map((icon, i) => (
-                        <li key={i}>
-                          <a target="_blank" rel="noreferrer" href={icon.url}>
-                            <FontAwesomeIcon icon={icon.icon} />
-                          </a>
-                          <span className={styles.tooltiptext}>{icon.name}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </Tween>
-            </Timeline>
-          )}
-        </Scene>
-      </Controller>
-    </div>
+    <Flex
+      as="nav"
+      align="center"
+      justify="space-between"
+      wrap="wrap"
+      w="100%"
+      p={8}
+      bg={['teal.400', 'teal.400', 'white', 'white']}
+      {...props}
+    >
+      <Logo w="100px" color={['white', 'white', 'teal.400', 'teal.400']} />
+      <MenuToggle toggle={toggle} isOpen={isOpen} />
+      <Box
+        display={{ base: isOpen ? 'block' : 'none', md: 'block' }}
+        flexBasis={{ base: '100%', md: 'auto' }}
+      >
+        <Stack
+          spacing={8}
+          align="center"
+          justify={['center', 'space-between', 'flex-end', 'flex-end']}
+          direction={['column', 'column', 'row', 'row']}
+          pt={[4, 4, 0, 0]}
+          color={['white', 'white', 'teal.400', 'teal.400']}
+        >
+          <MenuItem to="/">Home</MenuItem>
+          <MenuItem to="/GettingInvolved">Getting Involved</MenuItem>
+          <MenuItem to="/NewsAndEvents">News & Events</MenuItem>
+          <MenuItem to="/Resources">Resources</MenuItem>
+          <MenuItem to="/AboutUs">About Us</MenuItem>
+        </Stack>
+      </Box>
+    </Flex>
   );
 };
+
+export default Navbar;

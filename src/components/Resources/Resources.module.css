@@ -4,6 +4,7 @@
 
 .video {
   margin: 0 auto;
+  display: inline-block;
 }
 
 .quick_links {
@@ -50,4 +51,9 @@
   font-size: 18px;
   color: #457b9d;
   font-weight: 200;
+}
+
+.title {
+  padding-left: 410px;
+  height: 5px;
 }

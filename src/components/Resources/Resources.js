@@ -1,9 +1,15 @@
 import React from 'react';
-import ReactPlayer from 'react-player';
+//import ReactPlayer from 'react-player';
 import { gql, useQuery } from '@apollo/client';
+import VideoSlider from './VideoSlider.js';
+import { SliderData } from './SliderData.js';
+import './Slider.css';
+
 
 import styles from './Resources.module.css';
 import Layout from '../Layout';
+
+//<ReactPlayer url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
 
 const QUICK_LINKS_QUERY = gql`
   query Quick_Link_Collection {
@@ -18,8 +24,16 @@ const QUICK_LINKS_QUERY = gql`
         url
       }
     }
+    usefulVideoCollection {
+      items {
+        videoUrl
+        explanation
+        title
+      }
+    }
   }
 `;
+
 
 const Resources = () => {
   const { loading, data } = useQuery(QUICK_LINKS_QUERY);
@@ -29,7 +43,8 @@ const Resources = () => {
       <div className={styles.container}>
         <h1>Resources</h1>
         <div className={styles.video}>
-          <ReactPlayer url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+          <h2 className = {styles.title}>Title</h2>
+          <VideoSlider slides={SliderData}/>
         </div>
         <h2 className={styles.quick_links}>Quick Links</h2>
         <div className={styles.quick_links_container}>

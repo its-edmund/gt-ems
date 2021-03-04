@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gt-ems.netlify.app/",
+  "homepage": "https://gt-ems-dev.netlify.app/",
   "dependencies": {
     "@apollo/client": "^3.3.9",
     "@chakra-ui/icons": "^1.0.5",

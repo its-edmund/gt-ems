@@ -103,9 +103,11 @@ const Homepage = () => {
         }}
         wrap="no-wrap"
         minH="auto"
+        w={{ base: '80%', md: '60%' }}
         mb={{ base: 8, md: 50 }}
+        mx="auto"
       >
-        <Stack spacing={4} w={{ base: '80%', md: '40%' }} align="center">
+        <Stack spacing={4} w={{ base: '80%', md: '80%' }} align="center">
           <Heading
             as="h1"
             size="lg"
@@ -165,7 +167,7 @@ const Homepage = () => {
         mt={200}
         mb={{ base: 8, md: 50 }}
       >
-        <Stack spacing={4} w={{ base: '65%' }} align="center">
+        <Stack spacing={4} w={{ base: '60%' }} align="center">
           <Heading
             as="h1"
             size="lg"

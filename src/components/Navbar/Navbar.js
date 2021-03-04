@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Stack, Flex } from '@chakra-ui/react';
+import { Box, Stack, Flex, Button } from '@chakra-ui/react';
 import Logo from './Logo';
 
 import MenuToggle from './MenuToggle';
@@ -38,10 +38,20 @@ const Navbar = props => {
           color={['white', 'white', 'teal.400', 'teal.400']}
         >
           <MenuItem to="/">Home</MenuItem>
-          <MenuItem to="/GettingInvolved">Getting Involved</MenuItem>
           <MenuItem to="/NewsAndEvents">News & Events</MenuItem>
           <MenuItem to="/Resources">Resources</MenuItem>
           <MenuItem to="/AboutUs">About Us</MenuItem>
+          <Button
+            backgroundColor="teal.600"
+            color="white"
+            borderRadius="8px"
+            py="4"
+            px="4"
+            lineHeight="1"
+            size="lg"
+          >
+            <MenuItem to="/GettingInvolved">Get Involved</MenuItem>
+          </Button>
         </Stack>
       </Box>
     </Flex>

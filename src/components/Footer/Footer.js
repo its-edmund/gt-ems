@@ -5,14 +5,14 @@ import { Flex, Link } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <Flex w="100%" bgColor="teal.100" mt={40} p={30}>
+    <Flex w="100%" bgColor="mint.300" mt={40} p={30}>
       <Link
         target="_blank"
         href="https://dscgt.club"
         fontSize="lg"
         mx="auto"
-        color="teal.500"
-        _hover={{ textDecoration: 'none', color: 'teal.800' }}
+        color="mint.700"
+        _hover={{ textDecoration: 'none', color: 'mint.500' }}
       >
         Made with ♥️ by DSC@GT!
       </Link>

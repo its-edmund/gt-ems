@@ -58,7 +58,7 @@ const Homepage = () => {
             as="h1"
             fontSize={{ base: '3xl', md: '4xl', xl: '6xl' }}
             fontWeight="bold"
-            color="teal.500"
+            color="mint.700"
             textAlign={['center', 'center', 'left', 'left']}
           >
             {data.homepageText.jumbotronTitle}
@@ -66,7 +66,7 @@ const Homepage = () => {
           <Heading
             as="h2"
             size="md"
-            color="teal.400"
+            color="mint.500"
             opacity="0.8"
             fontWeight="normal"
             lineHeight={1.5}
@@ -76,13 +76,14 @@ const Homepage = () => {
           </Heading>
           <Link textDecoration="none" href="/gettinginvolved">
             <Button
-              backgroundColor="teal.600"
+              backgroundColor="mint.700"
               color="white"
               borderRadius="8px"
               py="4"
               px="4"
               lineHeight="1"
               size="lg"
+              _hover={{ bg: 'mint.300' }}
             >
               Join our Team →
             </Button>
@@ -124,12 +125,13 @@ const Homepage = () => {
           </Text>
           <Link textDecoration="none" href="/resources">
             <Button
-              backgroundColor="teal.600"
+              backgroundColor="mint.700"
               color="white"
               borderRadius="8px"
               py="4"
               px="4"
               lineHeight="1"
+              _hover={{ bg: 'mint.300' }}
               size="lg"
             >
               Resources
@@ -141,14 +143,14 @@ const Homepage = () => {
           ml={10}
           w={{ base: '80%', md: '96' }}
           p={10}
-          bgColor="teal.100"
+          bgColor="mint.300"
           borderRadius="lg"
           shadow="lg"
         >
-          <Heading as="h2" size="lg" color="teal.600" fontWeight="bold">
+          <Heading as="h2" size="lg" color="mint.700" fontWeight="bold">
             Emergency Contact
           </Heading>
-          <Text color="teal.500" fontSize="lg">
+          <Text color="mint.500" fontSize="lg">
             {data.homepageText.emergencyContact}
           </Text>
         </Box>

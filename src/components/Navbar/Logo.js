@@ -3,15 +3,16 @@
 import React from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Image, Link } from '@chakra-ui/react';
+import pic from '../../assets/gtems.png';
 library.add(fab);
 
 const Logo = props => {
   return (
     <Box {...props}>
-      <Text fontSize="3xl" fontWeight="bold">
-        Logo
-      </Text>
+      <Link to='/'>
+        <Image src={pic}/>
+      </Link>
     </Box>
   );
 };

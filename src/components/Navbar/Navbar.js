@@ -20,10 +20,10 @@ const Navbar = props => {
       wrap="wrap"
       w="100%"
       p={8}
-      bg={['teal.400', 'teal.400', 'white', 'white']}
+      bg={['mint.500', 'mint.500', 'white', 'white']}
       {...props}
     >
-      <Logo w="100px" color={['white', 'white', 'teal.400', 'teal.400']} />
+      <Logo w="200px" color={['white', 'white', 'teal.400', 'teal.400']} />
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       <Box
         display={{ base: isOpen ? 'block' : 'none', md: 'block' }}
@@ -35,20 +35,17 @@ const Navbar = props => {
           justify={['center', 'space-between', 'flex-end', 'flex-end']}
           direction={['column', 'column', 'row', 'row']}
           pt={[4, 4, 0, 0]}
-          color={['white', 'white', 'teal.400', 'teal.400']}
+          color={['white', 'white', 'mint.700', 'mint.700']}
         >
           <MenuItem to="/">Home</MenuItem>
           <MenuItem to="/NewsAndEvents">News & Events</MenuItem>
           <MenuItem to="/Resources">Resources</MenuItem>
           <MenuItem to="/AboutUs">About Us</MenuItem>
           <Button
-            backgroundColor="teal.600"
+            backgroundColor="mint.700"
             color="white"
             borderRadius="8px"
-            py="4"
-            px="4"
-            lineHeight="1"
-            size="lg"
+            _hover={{ bg: 'mint.300' }}
           >
             <MenuItem to="/GettingInvolved">Get Involved</MenuItem>
           </Button>

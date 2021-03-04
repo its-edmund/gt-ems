@@ -24,18 +24,18 @@ const Footer = () => {
             <FontAwesomeIcon icon={faSlack} size="2x" />
           </Stack>
         </Flex>
-        <Stack direction="column" mt={2} spacing={1} w='100px' color='mint.700' fontSize={15}>
-          <Link href="/support">
-              Support
+        <Stack direction="column" mt={2} spacing={1} w='150px' color='mint.700' fontSize={15}>
+          <Link href="/gettinginvolved" fontWeight='bold'>
+              Get Involved
           </Link>
-          <Link href="/contact">
-              Contact
+          <Link href="/newsandevents">
+              News & Events
           </Link>
-          <Link href="/faq">
-              FAQ
+          <Link href="/resources">
+              Resources
           </Link>
-          <Link href="/privacypolicy">
-              Privacy Policy
+          <Link href="/aboutus">
+              About Us
           </Link>
         </Stack>
       </Flex>

@@ -19,9 +19,13 @@ const Navbar = props => {
       justify="space-between"
       wrap="wrap"
       w="100%"
-      p={8}
-      bg={['mint.500', 'mint.500', 'white', 'white']}
+      px={8}
+      py={4}
+      bg={['mint.300', 'mint.300', 'white', 'white']}
       {...props}
+      zIndex='12'
+      pos="fixed"
+      shadow='md'
     >
       <Logo w="200px" color={['white', 'white', 'teal.400', 'teal.400']} />
       <MenuToggle toggle={toggle} isOpen={isOpen} />

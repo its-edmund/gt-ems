@@ -3,21 +3,15 @@ import React from 'react';
 import Container from './Container';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
+import { Box } from '@chakra-ui/layout';
 
 function Layout({ children }) {
   return (
     <Container>
-      <Navbar
-        menu={[
-          { name: 'Home', to: '/' },
-          { name: 'Getting Involved', to: '/GettingInvolved' },
-          { name: 'News & Events', to: '/NewsAndEvents' },
-          { name: 'Resources', to: '/Resources' },
-          { name: 'About Us', to: '/AboutUs' },
-        ]}
-        color="#a8dadc"
-      />
-      {children}
+      <Navbar />
+      <Box pt={100}>
+        {children}
+      </Box>
       <Footer />
     </Container>
   );

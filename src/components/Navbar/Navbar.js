@@ -45,14 +45,16 @@ const Navbar = props => {
           <MenuItem to="/NewsAndEvents">News & Events</MenuItem>
           <MenuItem to="/Resources">Resources</MenuItem>
           <MenuItem to="/AboutUs">About Us</MenuItem>
-          <Button
-            backgroundColor="mint.700"
-            color="white"
-            borderRadius="8px"
-            _hover={{ bg: 'mint.300' }}
-          >
-            <MenuItem to="/GettingInvolved">Get Involved</MenuItem>
-          </Button>
+          <MenuItem to="/GettingInvolved">
+            <Button
+              backgroundColor="mint.700"
+              color="white"
+              borderRadius="8px"
+              _hover={{ bg: 'mint.300' }}
+            >
+            Get Involved
+            </Button>
+          </MenuItem>
         </Stack>
       </Box>
     </Flex>

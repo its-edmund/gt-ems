@@ -12,11 +12,11 @@ const Footer = () => {
     <Flex w="100%" bgColor="mint.300" mt={40} p={30} flexDirection={'column'}>
       <Flex mx='auto' flexDirection='row'>
         <Flex flexDirection='column' mb={10} mr={10}>
-          <Box w='200px'>
-            <Link to='/'>
+          <Link href='/'>
+            <Box w='200px'>
               <Image src={pic}/>
-            </Link>
-          </Box>
+            </Box>
+          </Link>
           <Stack direction='row' ml={5} spacing={3} color="mint.700">
             <FontAwesomeIcon icon={faInstagram} size="2x" />
             <FontAwesomeIcon icon={faFacebook} size="2x" />

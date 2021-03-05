@@ -32,13 +32,13 @@ const Resources = () => {
       </Flex>
       <Flex direction='column' align='center'>
         <Heading as="h2" mx='auto' my={30} color='mint.700' fontSize='3xl'>Quick Links</Heading>
-        <Stack spacing={20}>
+        <Stack width={{ base: '80%', md: '60%' }} spacing={20}>
           {loading ? (
             <Box mx='auto'><Text>Loading Data...
             </Text></Box>
           ) : (
             data.quickLinkCollection.items.map((quickLink, i) => (
-              <Flex direction='row' key={i}>
+              <Flex align={{base: 'center'}} direction={{base: 'column', md: 'row'}} key={i}>
                 <Flex direction='column' mr={20}>
                   <Heading as='h3' size='lg' color='mint.700'>
                     <a
@@ -53,7 +53,8 @@ const Resources = () => {
                   <Text color='mint.500'>{quickLink.description}</Text>
                 </Flex>
                 <Image
-                  w='300px'
+                  mt={{base: 30, md: 0}}
+                  maxWidth={{base: '80%', md: '30%'}}
                   alt={quickLink.logo.description}
                   src={quickLink.logo.url}
                 />

@@ -140,7 +140,7 @@ const Homepage = () => {
         </Stack>
         <Box
           mt={{ base: 30, md: 0 }}
-          ml={10}
+          ml={{base: 0, md: 10}}
           w={{ base: '80%', md: '96' }}
           p={10}
           bgColor="mint.300"

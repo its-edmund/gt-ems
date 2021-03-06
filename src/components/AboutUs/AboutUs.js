@@ -88,26 +88,22 @@ const AboutUs = () => {
         ))}
       </Stack>
       <Flex
-        align="center"
-        justify={{
-          base: 'space-between',
-          md: 'space-around',
-          xl: 'space-between',
-        }}
+        align='center'
+        justify='center'
         direction='column'
-        px={{ base: 0, md: 10 }}
+        mx='auto'
         my={20}
         wrap="no-wrap"
         minH="auto"
       >
         <Stack
-          spacing={20}
-          w={{ base: '80%', md: '100%' }}
-          direction='row'
+          ml={{base: 0, md: 30}}
+          spacing={100}
+          direction={{base: 'column', md: 'row'}}
         >
           {data.personCollection.items.map((person) => (
-            <Flex align='center' direction='column' w={{ base: '20%', sm: '50%', md: '100%' }} mb={{ base: 12, md: 0 }} key={person}>
-              <Image src={person.profilePicture.url} mb={5} borderRadius="full" w='100px' />
+            <Flex align='center' direction='column' mb={{ base: 12, md: 0 }} key={person}>
+              <Image src={person.profilePicture.url} mb={5} borderRadius="full" w={{base: '200px', md: '100px'}} />
               <Heading fontSize='2xl' >
                 {person.position}
               </Heading>

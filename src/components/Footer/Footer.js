@@ -12,11 +12,11 @@ const Footer = () => {
     <Flex w="100%" bgColor="mint.300" mt={40} p={30} flexDirection={'column'}>
       <Flex mx='auto' flexDirection='row'>
         <Flex flexDirection='column' mb={10} mr={10}>
-          <Box w='200px'>
-            <Link to='/'>
+          <Link href='/'>
+            <Box w='200px'>
               <Image src={pic}/>
-            </Link>
-          </Box>
+            </Box>
+          </Link>
           <Stack direction='row' ml={5} spacing={3} color="mint.700">
             <FontAwesomeIcon icon={faInstagram} size="2x" />
             <FontAwesomeIcon icon={faFacebook} size="2x" />
@@ -24,18 +24,18 @@ const Footer = () => {
             <FontAwesomeIcon icon={faSlack} size="2x" />
           </Stack>
         </Flex>
-        <Stack direction="column" mt={2} spacing={1} w='100px' color='mint.700' fontSize={15}>
-          <Link href="/support">
-              Support
+        <Stack direction="column" mt={2} spacing={1} w='150px' color='mint.700' fontSize={15}>
+          <Link href="/gettinginvolved" fontWeight='bold'>
+              Get Involved
           </Link>
-          <Link href="/contact">
-              Contact
+          <Link href="/newsandevents">
+              News & Events
           </Link>
-          <Link href="/faq">
-              FAQ
+          <Link href="/resources">
+              Resources
           </Link>
-          <Link href="/privacypolicy">
-              Privacy Policy
+          <Link href="/aboutus">
+              About Us
           </Link>
         </Stack>
       </Flex>

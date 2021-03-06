@@ -111,16 +111,15 @@ const Homepage = () => {
         <Stack spacing={4} w={{ base: '80%', md: '80%' }} align="center">
           <Heading
             as="h1"
-            size="lg"
-            color="black"
-            opacity="0.8"
+            size="xl"
+            color="mint.700"
             fontWeight="bold"
             lineHeight={1.5}
             textAlign={['center', 'center', 'left', 'left']}
           >
             {data.homepageText.paragraphOneTitle}
           </Heading>
-          <Text color="gray.500" fontSize="2xl">
+          <Text color="mint.500" fontSize="2xl">
             {data.homepageText.paragraphOneBody}
           </Text>
           <Link textDecoration="none" href="/resources">
@@ -140,7 +139,7 @@ const Homepage = () => {
         </Stack>
         <Box
           mt={{ base: 30, md: 0 }}
-          ml={10}
+          ml={{base: 0, md: 10}}
           w={{ base: '80%', md: '96' }}
           p={10}
           bgColor="mint.300"
@@ -201,16 +200,16 @@ const Homepage = () => {
         <Stack spacing={4} w={{ base: '60%' }} align="center">
           <Heading
             as="h1"
-            size="lg"
-            color="black"
-            opacity="0.8"
+            size="xl"
+            color="mint.700"
+            opacity="1"
             fontWeight="bold"
             lineHeight={1.5}
             textAlign={['center', 'center', 'left', 'left']}
           >
             Who Are We?
           </Heading>
-          <Text color="gray.500" fontSize="2xl">
+          <Text color="mint.500" fontSize="2xl">
             We are an on-campus organization that is striving to make Georgia Tech a safer place.
           </Text>
         </Stack>
@@ -255,16 +254,16 @@ const Homepage = () => {
         <Stack spacing={4} w={{ base: '60%' }} align="center">
           <Heading
             as="h1"
-            size="lg"
-            color="black"
-            opacity="0.8"
+            size="xl"
+            color="mint.700"
+            opacity="1"
             fontWeight="bold"
             lineHeight={1.5}
             textAlign={['center', 'center', 'left', 'left']}
           >
             {data.homepageText.paragraphTwoTitle}
           </Heading>
-          <Text color="gray.500" fontSize="2xl">
+          <Text color="mint.500" fontSize="2xl">
             {data.homepageText.paragraphTwoBody}
           </Text>
         </Stack>

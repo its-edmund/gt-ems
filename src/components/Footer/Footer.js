@@ -1,62 +1,55 @@
 import React from 'react';
-import { Button, Form, TextArea } from 'semantic-ui-react';
+import { Stack, Flex, Link, Image, Box } from '@chakra-ui/react';
+import pic from '../../assets/gtems.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFacebookF,
-  faInstagram,
-  faLinkedin,
-  faSlack,
-} from '@fortawesome/free-brands-svg-icons';
-
-import styles from './Footer.module.css';
+import { faInstagram, faFacebook, faSlack, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+// import { Flex, Link } from '@chakra-ui/react';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faFacebookF, faInstagram, faLinkedin, faSlack } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.content}>
-        <div className={styles.contact_form}>
-          <h1 className={styles.headers}>Contact Us!</h1>
-          <Form>
-            <h2 className={styles.form_labels}>Email</h2>
-            <Form.Input placeholder="Email" />
-            <h2 className={styles.form_labels}>Message</h2>
-            <Form.Field
-              id="form-textarea-control-opinion"
-              control={TextArea}
-              placeholder="Message"
-            />
-            <Button className={styles.submit_button}>Submit</Button>
-          </Form>
-        </div>
-        <div className={styles.social_media}>
-          <h1 className={styles.headers}>Connect With Us!</h1>
-          <div className={styles.social_media_icons_group}>
-            <div className={styles.social_media_icons}>
-              <FontAwesomeIcon
-                className={styles.icon}
-                size="5x"
-                icon={faInstagram}
-              />
-            </div>
-            <div className={styles.social_media_icons}>
-              <FontAwesomeIcon size="5x" icon={faLinkedin} />
-            </div>
-            <div className={styles.social_media_icons}>
-              <FontAwesomeIcon size="5x" icon={faFacebookF} />
-            </div>
-            <div className={styles.social_media_icons}>
-              <FontAwesomeIcon size="5x" icon={faSlack} />
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr className={styles.line} />
-      <h1 className={styles.tagline}>
-        <a target="_blank" rel="noreferrer" className={styles.link} href="https://dscgt.club">
-          Made with 💙 by DSC@GT!
-        </a>
-      </h1>
-    </footer>
+    <Flex w="100%" bgColor="mint.300" mt={40} p={30} flexDirection={'column'}>
+      <Flex mx='auto' flexDirection='row'>
+        <Flex flexDirection='column' mb={10} mr={10}>
+          <Box w='200px'>
+            <Link to='/'>
+              <Image src={pic}/>
+            </Link>
+          </Box>
+          <Stack direction='row' ml={5} spacing={3} color="mint.700">
+            <FontAwesomeIcon icon={faInstagram} size="2x" />
+            <FontAwesomeIcon icon={faFacebook} size="2x" />
+            <FontAwesomeIcon icon={faLinkedin} size="2x" />
+            <FontAwesomeIcon icon={faSlack} size="2x" />
+          </Stack>
+        </Flex>
+        <Stack direction="column" mt={2} spacing={1} w='100px' color='mint.700' fontSize={15}>
+          <Link href="/support">
+              Support
+          </Link>
+          <Link href="/contact">
+              Contact
+          </Link>
+          <Link href="/faq">
+              FAQ
+          </Link>
+          <Link href="/privacypolicy">
+              Privacy Policy
+          </Link>
+        </Stack>
+      </Flex>
+      <Link
+        target="_blank"
+        href="https://dscgt.club"
+        fontSize="lg"
+        mx="auto"
+        color="mint.700"
+        _hover={{ textDecoration: 'none', color: 'mint.500' }}
+      >
+        Made with ♥️ by DSC@GT!
+      </Link>
+    </Flex>
   );
 };
 

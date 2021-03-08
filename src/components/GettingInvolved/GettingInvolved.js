@@ -22,6 +22,14 @@ const QUERY = gql`
         }
       }
     }
+    roleCollection {
+      items {
+        title
+        description
+        requirements
+        formUrl
+      }
+    }
   }
 `;
 

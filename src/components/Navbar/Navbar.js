@@ -42,7 +42,7 @@ const Navbar = props => {
           color={['white', 'white', 'mint.700', 'mint.700']}
         >
           <MenuItem to="/">Home</MenuItem>
-          <MenuItem to="/NewsAndEvents">News & Events</MenuItem>
+          <MenuItem to="/map">Map</MenuItem>
           <MenuItem to="/Resources">Resources</MenuItem>
           <MenuItem to="/AboutUs">About Us</MenuItem>
           <MenuItem to="/GettingInvolved">

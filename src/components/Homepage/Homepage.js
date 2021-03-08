@@ -4,7 +4,7 @@ import { useQuery, gql } from '@apollo/client';
 import { Box, Flex, Heading, Image, Link, Stack, Button, Text } from '@chakra-ui/react';
 
 import landingpic from '../../assets/gt.jpg';
-import Map from '../Map/Map';
+// import Map from '../Map/Map';
 import Layout from '../Layout';
 
 const HOMEPAGEQUERY = gql`
@@ -268,9 +268,9 @@ const Homepage = () => {
           </Text>
         </Stack>
       </Flex>
-      <Box align="center">
+      {/* <Box align="center">
         <Map />
-      </Box>
+      </Box> */}
     </Layout>
   );
 };

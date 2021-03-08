@@ -46,13 +46,14 @@ const GettingInvolved = () => {
         {loading ? (
           <div className={styles.no_roles}>Loading Data...</div>
         ) : (
-          data.roleCollection.items.map(role => {
+          data.roleCollection.items.map((role, i) => {
             return (
               <RoleCard
                 position={role.title}
                 pos_desc={role.description}
                 button_url={role.formUrl}
                 req_desc={role.requirements}
+                key={i}
               />
             );
           })

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 import { gql, useQuery } from '@apollo/client';
+import { Flex, Heading, Image, Stack, Text, Box } from '@chakra-ui/react';
 
-import styles from './Resources.module.css';
 import Layout from '../Layout';
 
 const QUICK_LINKS_QUERY = gql`
@@ -26,42 +26,43 @@ const Resources = () => {
 
   return (
     <Layout>
-      <div className={styles.container}>
-        <h1>Resources</h1>
-        <div className={styles.video}>
-          <ReactPlayer url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
-        </div>
-        <h2 className={styles.quick_links}>Quick Links</h2>
-        <div className={styles.quick_links_container}>
+      <Flex direction='column' my={10} align='center'>
+        <Heading as='h1' color='mint.700' fontSize='4xl' fontWeight='bold' mb={30}>Resources</Heading>
+        <ReactPlayer url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+      </Flex>
+      <Flex direction='column' align='center'>
+        <Heading as="h2" mx='auto' my={30} color='mint.700' fontSize='3xl'>Quick Links</Heading>
+        <Stack width={{ base: '80%', md: '60%' }} spacing={20}>
           {loading ? (
-            <div className={styles.no_roles}>Loading Data...</div>
+            <Box mx='auto'><Text>Loading Data...
+            </Text></Box>
           ) : (
             data.quickLinkCollection.items.map((quickLink, i) => (
-              <div className={styles.quick_link} key={i}>
-                <div className={styles.quick_link_text}>
-                  <a
-                    style={{ textDecoration: 'none' }}
-                    href={quickLink.url}
-                    className={styles.quick_link_title}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {quickLink.title}
-                  </a>
-                  <p className={styles.quick_link_body}>{quickLink.description}</p>
-                </div>
-                <div className={styles.quick_link_image}>
-                  <img
-                    alt={quickLink.logo.description}
-                    clssName={styles.emergency}
-                    src={quickLink.logo.url}
-                  />
-                </div>
-              </div>
+              <Flex align={{base: 'center'}} direction={{base: 'column', md: 'row'}} key={i}>
+                <Flex direction='column' mr={20}>
+                  <Heading as='h3' size='lg' color='mint.700'>
+                    <a
+                      style={{ textDecoration: 'none' }}
+                      href={quickLink.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {quickLink.title}
+                    </a>
+                  </Heading>
+                  <Text color='mint.500'>{quickLink.description}</Text>
+                </Flex>
+                <Image
+                  mt={{base: 30, md: 0}}
+                  maxWidth={{base: '80%', md: '30%'}}
+                  alt={quickLink.logo.description}
+                  src={quickLink.logo.url}
+                />
+              </Flex>
             ))
           )}
-        </div>
-      </div>
+        </Stack>
+      </Flex>
     </Layout>
   );
 };

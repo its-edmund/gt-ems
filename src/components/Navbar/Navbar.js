@@ -24,7 +24,8 @@ const Navbar = props => {
       bg={['mint.300', 'mint.300', 'white', 'white']}
       {...props}
       zIndex='12'
-      pos="fixed"
+      pos="sticky"
+      top='0'
       shadow='md'
     >
       <Logo w="150px" color={['white', 'white', 'teal.400', 'teal.400']} />

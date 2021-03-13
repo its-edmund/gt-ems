@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ApolloLink } from 'apollo-link';
 
 import './index.css';
 import App from './App';
@@ -17,7 +18,6 @@ const theme = extendTheme({
     },
   },
 });
-
 
 const client = new ApolloClient({
   uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_CONTENTFUL_SPACEID}`,

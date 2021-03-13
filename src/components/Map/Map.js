@@ -1,111 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import ReactMapGL from 'react-map-gl';
-import { Formik, Form, Field } from 'formik';
+import ReactMapGL, { Marker } from 'react-map-gl';
 import {
-  Center,
-  Flex,
-  FormLabel,
-  Input,
-  FormControl,
-  FormHelperText,
-  Select,
-  Box,
-  Button,
-  FormErrorMessage,
-  Heading
+  Box, Flex, Text
 } from '@chakra-ui/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-const Map = () => {
+const Map = (props) => {
   const [viewPort, setViewPort] = useState({
     latitude: 33.7765,
-    longitude: -84.3963,
-    zoom: 14
+    longitude: -84.3983,
+    zoom: 13.5
   });
-  const [locations, setLocations] = useState([]);
+  const [waypoints, setWaypoints] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await axios.get('https://m.gatech.edu/api/gtplaces/buildings/');
-      setLocations(data.data.map((location) => {
-        return {
-          name: location.name,
-          latitude: location.latitude,
-          longitude: location.longitude
-        };
-      }));
-    };
-
-    fetchData();
+    const data = axios.get('http://localhost:5000');
   }, []);
 
   return (
-    <Flex direction='column' align='center'>
-      <Heading as='h1' color='mint.700' fontSize='4xl' fontWeight='bold' mb={30}>Medical Incidence Map</Heading>
-      <Box mb={20} w='80%' p={5} borderWidth='1px' borderRadius={10} shadow='md'>
-        <Formik
-          onSubmit={(values, actions) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              actions.setSubmitting(false);
-            }, 1000);
-          }}
-        >
-          {(props) => (
-            <Form>
-              <Field name="type" >
-                {({ field, form }) => (
-                  <FormControl isInvalid={form.errors.name && form.touched.name}>
-                    <FormLabel htmlFor="name">Incident Type</FormLabel>
-                    <Input {...field} id="name" placeholder="name" />
-                    <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name="location" >
-                {({ field, form }) => (
-                  <FormControl isInvalid={form.errors.location && form.touched.location}>
-                    <FormLabel htmlFor="name">Incident Location</FormLabel>
-                    <Select>
-                      {locations.map((location) => {
-                        return <option key={location}>{location.name}</option>;
-                      })}
-                    </Select>
-                    <FormErrorMessage>{form.errors.location}</FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-              <Button
-                mt={4}
-                backgroundColor="mint.700"
-                color="white"
-                borderRadius="8px"
-                _hover={{ bg: 'mint.300' }}
-                isLoading={props.isSubmitting}
-                type="submit"
-              >
-            Submit
-              </Button>
-            </Form>
-          )}
-        </Formik>
-        {/* <Form id="email">
-          <FormLabel>Email address</FormLabel>
-          <Input type="email" />
-          <FormHelperText>We&apos;ll never share your email.</FormHelperText>
-        </Form> */}
-      </Box>
+    <Box {...props} overflow='hidden' zIndex={0} borderRadius='10px' shadow='lg'>
       <ReactMapGL
         {...viewPort}
+        style={{borderRadius: '10px'}}
         mapStyle="mapbox://styles/mapbox/outdoors-v9"
         showZoom
         showCompass
-        width="80%"
-        height="300px"
+        width="100%"
+        height="100%"
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         onViewportChange={(viewport) => setViewPort(viewport)}
-      />
-    </Flex>
+      >
+        <Marker longitude={-84.3963} latitude={33.7756}>
+          <FontAwesomeIcon icon={faMapPin} className="pin-icon" style={{ cursor: 'pointer', color: '#003057', fontSize: '2rem', transform: 'translate(-9px, -32px)'}} />
+          <Box backgroundColor='whiteAlpha.700' borderRadius={5} transform='translate(18px, -65px)' p={2}>
+            <Text fontWeight='bold' zIndex={-2}>Hello!</Text>
+          </Box>
+        </Marker>
+      </ReactMapGL>
+    </Box>
   );
 };
 

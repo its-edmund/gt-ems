@@ -16,7 +16,7 @@ const Map = (props) => {
   const [waypoints, setWaypoints] = useState([]);
 
   useEffect(() => {
-    const data = axios.get('http://localhost:5000');
+    setWaypoints(props.data.getWaypoints);
   }, []);
 
   return (
@@ -32,12 +32,14 @@ const Map = (props) => {
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         onViewportChange={(viewport) => setViewPort(viewport)}
       >
-        <Marker longitude={-84.3963} latitude={33.7756}>
-          <FontAwesomeIcon icon={faMapPin} className="pin-icon" style={{ cursor: 'pointer', color: '#003057', fontSize: '2rem', transform: 'translate(-9px, -32px)'}} />
-          <Box backgroundColor='whiteAlpha.700' borderRadius={5} transform='translate(18px, -65px)' p={2}>
-            <Text fontWeight='bold' zIndex={-2}>Hello!</Text>
-          </Box>
-        </Marker>
+        {waypoints.map((waypoint, i) => (
+          <Marker longitude={waypoint.long} latitude={waypoint.lat} key={waypoint.id}>
+            <FontAwesomeIcon icon={faMapPin} className="pin-icon" style={{ cursor: 'pointer', color: '#003057', fontSize: '2rem', transform: 'translate(-9px, -32px)'}} />
+            <Box backgroundColor='whiteAlpha.700' borderRadius={5} transform='translate(18px, -65px)' p={2}>
+              <Text fontWeight='bold' zIndex={-2}>{waypoint.nature}</Text>
+            </Box>
+          </Marker>
+        ))}
       </ReactMapGL>
     </Box>
   );

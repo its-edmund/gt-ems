@@ -14,18 +14,38 @@ import {
   Center
 } from '@chakra-ui/react';
 import axios from 'axios';
+import { ApolloClient, gql, useQuery, InMemoryCache } from '@apollo/client';
 
 import Map from './Map';
 import Layout from '../Layout';
 import Navbar from '../Navbar/Navbar';
 
+const mongoClient = new ApolloClient({
+  uri: 'http://localhost:5000/graphql',
+  cache: new InMemoryCache(),
+});
+
+const WAYPOINTS = gql`
+  query {
+    getWaypoints {
+      id
+      long
+      lat
+      nature
+    }
+  }
+`;
+
 const MapPage = () => {
   const [locations, setLocations] = useState([]);
+  const { data, errors, loading } = useQuery(WAYPOINTS, {
+    client: mongoClient
+  });
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await axios.get('https://m.gatech.edu/api/gtplaces/buildings/');
-      setLocations(data.data.map((location) => {
+      const locations = await axios.get('https://m.gatech.edu/api/gtplaces/buildings/');
+      setLocations(locations.data.map((location) => {
         return {
           name: location.name,
           latitude: location.latitude,
@@ -91,7 +111,9 @@ const MapPage = () => {
               )}
             </Formik>
           </Box>
-          <Map w={500} ml='10px'/>
+          {loading ? <></> :
+            <Map w={500} ml='10px' data={data} />
+          }
         </Flex>
       </Center>
     </>

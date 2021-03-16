@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactPlayer from 'react-player';
 import { gql, useQuery } from '@apollo/client';
-import { Flex, Heading, Image, Stack, Text, Box } from '@chakra-ui/react';
-
+import { Flex, Heading, Image, Stack, Text, Box} from '@chakra-ui/react';
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '../Layout';
+import ReactPlayer from 'react-player';
 
 const QUICK_LINKS_QUERY = gql`
   query Quick_Link_Collection {
@@ -18,6 +19,13 @@ const QUICK_LINKS_QUERY = gql`
         url
       }
     }
+    usefulVideoCollection {
+      items {
+        videoUrl
+        explanation
+        title
+      }
+    }
   }
 `;
 
@@ -28,9 +36,22 @@ const Resources = () => {
     <Layout>
       <Flex direction='column' my={10} align='center'>
         <Heading as='h1' color='mint.700' fontSize='4xl' fontWeight='bold' mb={30}>Resources</Heading>
-        <ReactPlayer url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
       </Flex>
-      <Flex direction='column' align='center'>
+      <Carousel>
+        {loading ? (
+          <Box mx='auto'><Text>Loading Data...
+          </Text></Box>
+        ) : (
+          data.usefulVideoCollection.items.map((videoLink, i) => (
+            <Carousel.Item key={i}>
+              <Heading className="video_link_title" textAlign="center" fontSize={23} textDecoration="underline" color="blackAlpha.800">{videoLink.title}</Heading>
+              <Text className="video_link_explanation" fontSize={18} textAlign="center" paddingBottom={5} marginLeft="24%" marginRight="24%">{videoLink.explanation}</Text>
+              <ReactPlayer className="d-block w-100" url={videoLink.videoUrl} paddingBottom={5}/>
+            </Carousel.Item>
+          ))
+        )}
+      </Carousel>
+      <Flex direction='column' align='center' paddingTop={10}>
         <Heading as="h2" mx='auto' my={30} color='mint.700' fontSize='3xl'>Quick Links</Heading>
         <Stack width={{ base: '80%', md: '60%' }} spacing={20}>
           {loading ? (

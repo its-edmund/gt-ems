@@ -16,7 +16,7 @@ const Map = (props) => {
   const [waypoints, setWaypoints] = useState([]);
 
   useEffect(() => {
-    setWaypoints(props.data.getWaypoints);
+    setWaypoints(props.data ? props.data.getWaypoints : []);
   }, []);
 
   return (

@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '../Layout';
 import ReactPlayer from 'react-player';
 
+//<ReactPlayer url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+
 const QUICK_LINKS_QUERY = gql`
   query Quick_Link_Collection {
     quickLinkCollection {
@@ -28,6 +30,7 @@ const QUICK_LINKS_QUERY = gql`
     }
   }
 `;
+
 
 const Resources = () => {
   const { loading, data } = useQuery(QUICK_LINKS_QUERY);

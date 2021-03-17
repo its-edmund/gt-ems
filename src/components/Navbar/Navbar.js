@@ -24,7 +24,8 @@ const Navbar = props => {
       bg={['mint.300', 'mint.300', 'white', 'white']}
       {...props}
       zIndex='12'
-      pos="fixed"
+      pos="sticky"
+      top='0'
       shadow='md'
     >
       <Logo w="150px" color={['white', 'white', 'teal.400', 'teal.400']} />
@@ -42,7 +43,7 @@ const Navbar = props => {
           color={['white', 'white', 'mint.700', 'mint.700']}
         >
           <MenuItem to="/">Home</MenuItem>
-          <MenuItem to="/NewsAndEvents">News & Events</MenuItem>
+          <MenuItem to="/map">Map</MenuItem>
           <MenuItem to="/Resources">Resources</MenuItem>
           <MenuItem to="/AboutUs">About Us</MenuItem>
           <MenuItem to="/GettingInvolved">

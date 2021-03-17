@@ -9,9 +9,7 @@ function Layout({ children }) {
   return (
     <Container>
       <Navbar />
-      <Box pt={100}>
-        {children}
-      </Box>
+      {children}
       <Footer />
     </Container>
   );

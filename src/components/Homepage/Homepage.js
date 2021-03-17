@@ -3,6 +3,7 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Box, Flex, Heading, Image, Link, Stack, Button, Text } from '@chakra-ui/react';
 
+// import Map from '../Map/Map';
 //import landingpic from '../../assets/gt.jpg';
 import landingpic2 from '../../assets/georgiatechhealth.jpeg';
 import Map from '../Map/Map';
@@ -140,7 +141,7 @@ const Homepage = () => {
         </Stack>
         <Box
           mt={{ base: 30, md: 0 }}
-          ml={{base: 0, md: 10}}
+          ml={{ base: 0, md: 10 }}
           w={{ base: '80%', md: '96' }}
           p={10}
           bgColor="mint.300"
@@ -155,9 +156,29 @@ const Homepage = () => {
           </Text>
         </Box>
       </Flex>
-      <svg height="100%" width="100%" id="bg-svg" viewBox="0 0 1440 400" xmlns="http://www.w3.org/2000/svg" className="transition duration-300 ease-in-out delay-150">
-        <path d="M 0,400 C 0,400 0,200 0,200 C 111.21428571428572,203.75 222.42857142857144,207.5 333,223 C 443.57142857142856,238.5 553.5000000000001,265.75 679,260 C 804.4999999999999,254.25 945.5714285714284,215.5 1075,200 C 1204.4285714285716,184.5 1322.2142857142858,192.25 1440,200 C 1440,200 1440,400 1440,400 Z" stroke="none" strokeWidth="0" fill="#cae7e8ff" className="transition-all duration-300 ease-in-out delay-150" />
-        <path d="M 0,400 C 0,400 0,200 0,200 C 143.14285714285714,207.42857142857144 286.2857142857143,214.85714285714286 395,206 C 503.7142857142857,197.14285714285714 578,172.00000000000003 674,152 C 770,131.99999999999997 887.7142857142858,117.14285714285714 1019,126 C 1150.2857142857142,134.85714285714286 1295.142857142857,167.42857142857144 1440,200 C 1440,200 1440,400 1440,400 Z" stroke="none" strokeWidth="0" fillOpacity="0.5" fill="#cae7e8ff" className="transition-all duration-300 ease-in-out delay-150" />
+      <svg
+        height="100%"
+        width="100%"
+        id="bg-svg"
+        viewBox="0 0 1440 400"
+        xmlns="http://www.w3.org/2000/svg"
+        className="transition duration-300 ease-in-out delay-150"
+      >
+        <path
+          d="M 0,400 C 0,400 0,200 0,200 C 111.21428571428572,203.75 222.42857142857144,207.5 333,223 C 443.57142857142856,238.5 553.5000000000001,265.75 679,260 C 804.4999999999999,254.25 945.5714285714284,215.5 1075,200 C 1204.4285714285716,184.5 1322.2142857142858,192.25 1440,200 C 1440,200 1440,400 1440,400 Z"
+          stroke="none"
+          strokeWidth="0"
+          fill="#cae7e8ff"
+          className="transition-all duration-300 ease-in-out delay-150"
+        />
+        <path
+          d="M 0,400 C 0,400 0,200 0,200 C 143.14285714285714,207.42857142857144 286.2857142857143,214.85714285714286 395,206 C 503.7142857142857,197.14285714285714 578,172.00000000000003 674,152 C 770,131.99999999999997 887.7142857142858,117.14285714285714 1019,126 C 1150.2857142857142,134.85714285714286 1295.142857142857,167.42857142857144 1440,200 C 1440,200 1440,400 1440,400 Z"
+          stroke="none"
+          strokeWidth="0"
+          fillOpacity="0.5"
+          fill="#cae7e8ff"
+          className="transition-all duration-300 ease-in-out delay-150"
+        />
       </svg>
       {/* <svg
         width="100%"
@@ -185,7 +206,7 @@ const Homepage = () => {
         </g>
       </svg> */}
       <Flex
-        bgColor='#cae7e8'
+        bgColor="#cae7e8"
         align="center"
         justify={{
           base: 'center',
@@ -196,7 +217,6 @@ const Homepage = () => {
         }}
         wrap="no-wrap"
         minH="auto"
-
       >
         <Stack spacing={4} w={{ base: '60%' }} align="center">
           <Heading
@@ -215,10 +235,30 @@ const Homepage = () => {
           </Text>
         </Stack>
       </Flex>
-      <svg height="100%" width="100%" id="bg-svg" viewBox="0 0 1440 400" xmlns="http://www.w3.org/2000/svg" className="transition duration-300 ease-in-out delay-150">
+      <svg
+        height="100%"
+        width="100%"
+        id="bg-svg"
+        viewBox="0 0 1440 400"
+        xmlns="http://www.w3.org/2000/svg"
+        className="transition duration-300 ease-in-out delay-150"
+      >
         <g transform="matrix(-1.66667,-2.04108e-16,2.39768e-16,-1.95785,2400,626.513)">
-          <path d="M 0,400 C 0,400 0,200 0,200 C 111.21428571428572,203.75 222.42857142857144,207.5 333,223 C 443.57142857142856,238.5 553.5000000000001,265.75 679,260 C 804.4999999999999,254.25 945.5714285714284,215.5 1075,200 C 1204.4285714285716,184.5 1322.2142857142858,192.25 1440,200 C 1440,200 1440,400 1440,400 Z" stroke="none" strokeWidth="0" fill="#cae7e8ff" className="transition-all duration-300 ease-in-out delay-150" />
-          <path d="M 0,400 C 0,400 0,200 0,200 C 87.64285714285714,172.17857142857144 175.28571428571428,144.35714285714286 305,148 C 434.7142857142857,151.64285714285714 606.5,186.74999999999997 743,207 C 879.5,227.25000000000003 980.7142857142858,232.64285714285714 1091,229 C 1201.2857142857142,225.35714285714286 1320.642857142857,212.67857142857144 1440,200 C 1440,200 1440,400 1440,400 Z" stroke="none" strokeWidth="0" fillOpacity='0.5' fill="#cae7e8ff" className="transition-all duration-300 ease-in-out delay-150" />
+          <path
+            d="M 0,400 C 0,400 0,200 0,200 C 111.21428571428572,203.75 222.42857142857144,207.5 333,223 C 443.57142857142856,238.5 553.5000000000001,265.75 679,260 C 804.4999999999999,254.25 945.5714285714284,215.5 1075,200 C 1204.4285714285716,184.5 1322.2142857142858,192.25 1440,200 C 1440,200 1440,400 1440,400 Z"
+            stroke="none"
+            strokeWidth="0"
+            fill="#cae7e8ff"
+            className="transition-all duration-300 ease-in-out delay-150"
+          />
+          <path
+            d="M 0,400 C 0,400 0,200 0,200 C 87.64285714285714,172.17857142857144 175.28571428571428,144.35714285714286 305,148 C 434.7142857142857,151.64285714285714 606.5,186.74999999999997 743,207 C 879.5,227.25000000000003 980.7142857142858,232.64285714285714 1091,229 C 1201.2857142857142,225.35714285714286 1320.642857142857,212.67857142857144 1440,200 C 1440,200 1440,400 1440,400 Z"
+            stroke="none"
+            strokeWidth="0"
+            fillOpacity="0.5"
+            fill="#cae7e8ff"
+            className="transition-all duration-300 ease-in-out delay-150"
+          />
         </g>
       </svg>
       {/* <svg
@@ -269,9 +309,9 @@ const Homepage = () => {
           </Text>
         </Stack>
       </Flex>
-      <Box align="center">
+      {/* <Box align="center">
         <Map />
-      </Box>
+      </Box> */}
     </Layout>
   );
 };

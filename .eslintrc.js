@@ -19,5 +19,6 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'react/prop-types': 0,
+    'no-unused-vars': 'warn'
   },
 };

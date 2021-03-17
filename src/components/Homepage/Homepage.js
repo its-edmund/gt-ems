@@ -3,10 +3,8 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Box, Flex, Heading, Image, Link, Stack, Button, Text } from '@chakra-ui/react';
 
-// import Map from '../Map/Map';
 //import landingpic from '../../assets/gt.jpg';
 import landingpic2 from '../../assets/georgiatechhealth.jpeg';
-import Map from '../Map/Map';
 import Layout from '../Layout';
 
 const HOMEPAGEQUERY = gql`

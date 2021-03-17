@@ -3,7 +3,8 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Box, Flex, Heading, Image, Link, Stack, Button, Text } from '@chakra-ui/react';
 
-import landingpic from '../../assets/gt.jpg';
+//import landingpic from '../../assets/gt.jpg';
+import landingpic2 from '../../assets/georgiatechhealth.jpeg';
 import Map from '../Map/Map';
 import Layout from '../Layout';
 
@@ -90,7 +91,7 @@ const Homepage = () => {
           </Link>
         </Stack>
         <Box w={{ base: '80%', sm: '60%', md: '50%' }} mb={{ base: 12, md: 0 }}>
-          <Image src={landingpic} rounded="1rem" shadow="2xl" />
+          <Image src={landingpic2} rounded="1rem" shadow="2xl" />
         </Box>
       </Flex>
       <Flex

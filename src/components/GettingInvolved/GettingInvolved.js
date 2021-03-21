@@ -36,6 +36,10 @@ const QUERY = gql`
 const GettingInvolved = () => {
   const { data, loading } = useQuery(QUERY);
 
+  if (data) {
+    console.log(data.roleCollection.items);
+  }
+
   return (
     <Layout>
       <Flex
@@ -98,12 +102,14 @@ const GettingInvolved = () => {
         <Heading as="h2" mx='auto' color='mint.700' fontSize='3xl'>Open Roles</Heading>
       </Box>
       <Flex align='center'>
-        <Stack direction='row' spacing={4} mx='auto' my={20}>
-          <RoleCard />
+        <Stack direction={{base: 'column', md: 'row'}} spacing={10} mx='auto' my={20}>
+          {
+            loading ? ( <Text>Loading</Text> ) : ( data.roleCollection.items.map((role) => <RoleCard key={role} position={role.title} pos_desc={role.description} requirements={role.requirements}/> ))
+          }
         </Stack>
       </Flex>
       <Flex direction='column' align='center'>
-        <Heading as="h2" mx='auto' my={30} color='mint.700' fontSize='3xl'>Learn more about our initiatives ✅</Heading>
+        <Heading as="h2" mx='auto' my={30} color='mint.700' fontSize='3xl'>Learn more about our initiatives</Heading>
         <Stack width={{ base: '80%', md: '60%' }} space={20}>
           {loading ? (
             <div className={styles.no_roles}>Loading Data...</div>

@@ -30,10 +30,13 @@ function App() {
         <Route path="/AboutUs">
           <AboutUs />
         </Route>
-        <Route path='/_graphql' component={() => { 
-          window.location.href = `https://graphql.contentful.com/content/v1/spaces/x3v145xhhaih/explore?access_token=${process.env.REACT_APP_CONTENTFUL_TOKEN}`; 
-          return null;
-        }}/>
+        <Route
+          path="/_graphql"
+          component={() => {
+            window.location.href = `https://graphql.contentful.com/content/v1/spaces/x3v145xhhaih/explore?access_token=${process.env.REACT_APP_CONTENTFUL_TOKEN}`;
+            return null;
+          }}
+        />
       </Switch>
     </Router>
   );

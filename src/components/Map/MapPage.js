@@ -12,7 +12,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import axios from 'axios';
-import { ApolloClient, gql, useQuery, InMemoryCache } from '@apollo/client';
+import { ApolloClient, gql, useQuery, InMemoryCache, useMutation } from '@apollo/client';
 // import ReactDatePicker from 'react-datepicker';
 
 import Map from './Map';
@@ -21,6 +21,7 @@ import Navbar from '../Navbar/Navbar';
 
 const mongoClient = new ApolloClient({
   uri: 'http://localhost:5000/graphql',
+  onError: (e) => { console.log(e); },
   cache: new InMemoryCache(),
 });
 
@@ -35,11 +36,25 @@ const WAYPOINTS = gql`
   }
 `;
 
+const CREATE_WAYPOINT = gql`
+  mutation createWaypoint($long: Float!, $lat: Float!, $nature: String!) {
+    createWaypoint(long: $long, lat: $lat, nature: $nature) {
+      id
+      long
+      lat
+      nature
+    }
+  }
+`;
+
 const MapPage = () => {
   const [locations, setLocations] = useState([]);
   const { data, loading } = useQuery(WAYPOINTS, {
     client: mongoClient,
   });
+  const [createWaypoint, { loading: mutationLoading, error: mutationError }] = useMutation(CREATE_WAYPOINT);
+
+  console.log(mutationError);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,21 +85,30 @@ const MapPage = () => {
             <Formik
               initialValues={{
                 nature: '',
+                location: 'Select a Location'
               }}
               validate={values => {
                 const errors = {};
                 if (!values.nature) {
                   errors.nature = 'The nature of the incidence is required';
                 }
-                console.log(values);
                 if (values.location === 'Select a Location') {
                   errors.location = 'The location of the incidence is required';
                 }
-                console.log(errors);
                 return errors;
               }}
               onSubmit={values => {
-                console.log(values);
+                let longitude;
+                let latitude;
+                locations.some((location) => {
+                  if (values.location === location.name) {
+                    longitude = location.longitude;
+                    latitude = location.latitude;
+                    return true;
+                  }
+                });
+                console.log(longitude + ' ' + latitude + ' ' + values.nature);
+                createWaypoint({ variables: { long: longitude, lat: latitude, nature: values.nature }});
               }}
             >
               {({ values, errors, isSubmitting, handleChange }) => (
@@ -133,7 +157,7 @@ const MapPage = () => {
                     color="white"
                     borderRadius="8px"
                     _hover={{ bg: 'mint.300' }}
-                    isLoading={isSubmitting}
+                    isLoading={mutationLoading}
                     type="submit"
                   >
                     Submit

@@ -49,10 +49,10 @@ const AboutUs = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [testVar, setTestVar] = useState('hi');
+  const [biography, setBiography] = useState('hi');
 
   function handleClick(value) {
-    setTestVar(value);
+    setBiography(value);
     {onOpen();}
   }
 
@@ -138,7 +138,7 @@ const AboutUs = () => {
               <ModalHeader>Biography</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                {testVar}
+                {biography}
               </ModalBody>
 
               <ModalFooter>

@@ -117,17 +117,17 @@ const GettingInvolved = () => {
             data.initiativeCollection.items.map((initiative, i) => (
               <Flex direction='row' key={i}>
                 <Flex direction='column' mr={20}>
-                  <Heading as='h3' size='lg' color='mint.700'>
+                  <Heading as='h3' size='lg' color='mint.700' fontSize='2xl'>
                     <a
                       style={{ textDecoration: 'none' }}
                       href={initiative.slug}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {'Initiative ' + (i + 1) + ': ' + initiative.title}
+                      {initiative.title}
                     </a>
                   </Heading>
-                  <Text color='mint.500'>{initiative.summary}</Text>
+                  <Text color='mint.500' fontSize='xl'>{initiative.summary}</Text>
                 </Flex>
                 <Image
                   mt={{base: 30, md: 0}}

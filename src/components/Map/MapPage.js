@@ -80,8 +80,8 @@ const MapPage = () => {
     <>
       <Navbar />
       <Center mt={100}>
-        <Flex direction={{ base: 'column', lg: 'row' }}>
-          <Box h="400px" p={5} borderWidth="1px" borderRadius={10} shadow="md" mr="10px">
+        <Flex direction={{ base: 'column', md: 'row' }}>
+          <Box h="400px" p={5} borderWidth="1px" borderRadius={10} shadow="md" mr={{ base: '0px', md: '10px' }}>
             <Formik
               initialValues={{
                 nature: '',
@@ -166,7 +166,7 @@ const MapPage = () => {
               )}
             </Formik>
           </Box>
-          {loading ? <></> : <Map w={500} ml="10px" data={data} />}
+          {loading ? <></> : <Map w={500} ml={{ base: '0px', md: '10px' }} data={data} />}
         </Flex>
       </Center>
     </>

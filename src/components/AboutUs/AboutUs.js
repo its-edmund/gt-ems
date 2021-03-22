@@ -49,10 +49,10 @@ const AboutUs = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [testVar, setTestVar] = useState('hi');
+  const [biography, setBiography] = useState('hi');
 
   function handleClick(value) {
-    setTestVar(value);
+    setBiography(value);
     {onOpen();}
   }
 
@@ -123,7 +123,7 @@ const AboutUs = () => {
         >
           {data.personCollection.items.map((person) => (
             <Flex align='center' direction='column' mb={{ base: 12, md: 0 }} key={person}>
-              <Image src={person.profilePicture.url} mb={5} borderRadius="full" w={{base: '200px', md: '100px'}} />
+              <Image src={person.profilePicture.url} mb={5} borderRadius="full" w={{base: '200px', md: '100px'}} onClick={() => handleClick(person.biography)} />
               <Heading fontSize='2xl' >
                 {person.position}
               </Heading>
@@ -153,7 +153,7 @@ const AboutUs = () => {
               <ModalHeader>Biography</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                {testVar}
+                {biography}
               </ModalBody>
 
               <ModalFooter>

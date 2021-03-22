@@ -122,29 +122,14 @@ const AboutUs = () => {
           direction={{base: 'column', md: 'row'}}
         >
           {data.personCollection.items.map((person) => (
-            <Flex align='center' direction='column' mb={{ base: 12, md: 0 }} key={person}>
+            <Flex align='center' direction='column' mb={{ base: 12, md: 0 }} key={person} onClick={() => handleClick(person.biography)} cursor='pointer'>
               <Image src={person.profilePicture.url} mb={5} borderRadius="full" w={{base: '200px', md: '100px'}} />
-              <Heading fontSize='2xl' >
+              <Heading fontSize='2xl' onClick={() => handleClick(person.biography)}>
                 {person.position}
               </Heading>
-              <Text color="gray.500" fontSize="lg">
+              <Text color="gray.500" fontSize="lg" onClick={() => handleClick(person.biography)} cursor='pointer'>
                 {person.name}
               </Text>
-              <>
-                <Button 
-                  onClick={() => handleClick(person.biography)}
-                  backgroundColor="mint.300"
-                  color="white"
-                  borderRadius="8px"
-                  py="4"
-                  px="4"
-                  lineHeight="1"
-                  size="lg"
-                  _hover={{ bg: 'mint.100' }}
-                >
-                  Learn More
-                </Button>
-              </>
             </Flex>
           ))}
           <Modal isOpen={isOpen} onClose={onClose}>

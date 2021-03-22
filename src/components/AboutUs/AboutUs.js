@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Flex, Heading, Stack, Text, Link, Button, Image } from '@chakra-ui/react';
 import {
@@ -42,11 +42,19 @@ const QUERY = gql`
 `;
 
 const AboutUs = () => {
+
   const { data, errors, loading } = useQuery(QUERY);
 
   console.log(errors);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [testVar, setTestVar] = useState('hi');
+
+  function handleClick(value) {
+    setTestVar(value);
+    {onOpen();}
+  }
 
   return loading ? (
     <div></div>
@@ -124,7 +132,7 @@ const AboutUs = () => {
               </Text>
               <>
                 <Button 
-                  onClick={onOpen}
+                  onClick={() => handleClick(person.biography)}
                   backgroundColor="mint.300"
                   color="white"
                   borderRadius="8px"
@@ -136,26 +144,25 @@ const AboutUs = () => {
                 >
                   Learn More
                 </Button>
-
-                <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay />
-                  <ModalContent>
-                    <ModalHeader>Bio</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      {person.biography}
-                    </ModalBody>
-
-                    <ModalFooter>
-                      <Button colorScheme="blue" mr={3} onClick={onClose}>
-                        Close
-                      </Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>
               </>
             </Flex>
           ))}
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Biography</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                {testVar}
+              </ModalBody>
+
+              <ModalFooter>
+                <Button colorScheme="blue" mr={3} onClick={onClose}>
+                  Close
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
         </Stack>  
         <Link mt={10} textDecoration="none" href="/gettinginvolved">
           <Button

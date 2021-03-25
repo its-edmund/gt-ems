@@ -132,7 +132,7 @@ const AboutUs = () => {
               </Text>
             </Flex>
           ))}
-          <Modal isOpen={isOpen} onClose={onClose}>
+          <Modal isOpen={isOpen} onClose={onClose} isCentered>
             <ModalOverlay />
             <ModalContent>
               <ModalHeader>Biography</ModalHeader>

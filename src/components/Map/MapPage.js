@@ -34,7 +34,7 @@ import Navbar from '../Navbar/Navbar';
 // import DatePicker from './DatePicker/DatePicker';
 
 const mongoClient = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  uri: process.env.NODE_ENV === 'development' ? 'http://localhost:5000/graphql' : 'https://gt-ems-server.herokuapp.com/graphql',
   onError: (e) => { console.log(e); },
   cache: new InMemoryCache(),
 });

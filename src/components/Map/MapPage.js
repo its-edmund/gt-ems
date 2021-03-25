@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { ApolloClient, gql, InMemoryCache, useMutation, useLazyQuery } from '@apollo/client';
+import badWords from 'bad-words';
 // import ReactDatePicker from 'react-datepicker';
 
 import Map from './Map';
@@ -103,10 +104,15 @@ const MapPage = () => {
                 nature: '',
                 location: 'Select a Location'
               }}
+              validateOnChange={false}
               validate={values => {
+                let filter = new badWords();
                 const errors = {};
                 if (!values.nature) {
                   errors.nature = 'The nature of the incidence is required';
+                }
+                if (filter.isProfane(values.nature)) {
+                  errors.nature = 'Please don\'t use profane language.';
                 }
                 if (values.location === 'Select a Location') {
                   errors.location = 'The location of the incidence is required';

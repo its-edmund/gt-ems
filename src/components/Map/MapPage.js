@@ -12,7 +12,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import axios from 'axios';
-import { ApolloClient, gql, useQuery, InMemoryCache, useMutation } from '@apollo/client';
+import { ApolloClient, gql, InMemoryCache, useMutation, useLazyQuery } from '@apollo/client';
 // import ReactDatePicker from 'react-datepicker';
 
 import Map from './Map';
@@ -37,7 +37,7 @@ const WAYPOINTS = gql`
 `;
 
 const CREATE_WAYPOINT = gql`
-  mutation createWaypoint($long: Float!, $lat: Float!, $nature: String!) {
+  mutation ($long: Float!, $lat: Float!, $nature: String!) {
     createWaypoint(long: $long, lat: $lat, nature: $nature) {
       id
       long
@@ -49,12 +49,19 @@ const CREATE_WAYPOINT = gql`
 
 const MapPage = () => {
   const [locations, setLocations] = useState([]);
-  const { data, loading } = useQuery(WAYPOINTS, {
+  const [waypoints, setWaypoints] = useState([]);
+
+  const [createWaypoint, { loading: mutationLoading }] = useMutation(CREATE_WAYPOINT, {
     client: mongoClient,
   });
-  const [createWaypoint, { loading: mutationLoading, error: mutationError }] = useMutation(CREATE_WAYPOINT);
 
-  console.log(mutationError);
+  const [getWaypoints, { data: waypointsData }] = useLazyQuery(WAYPOINTS, {
+    client: mongoClient,
+    fetchPolicy: 'cache-and-network',
+    onCompleted() {
+      setWaypoints(waypointsData.getWaypoints);
+    }
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,7 +81,16 @@ const MapPage = () => {
     };
 
     fetchData();
+    getWaypoints();
   }, []);
+
+  // useEffect(() => {
+  //   console.log('hllow?');
+  //   if (waypointsData) {
+  //     console.log(waypointsData);
+  //     setWaypoints(waypointsData.getWaypoints);
+  //   }
+  // }, [waypointsData, waypointsLoading, called]);
 
   return (
     <>
@@ -107,11 +123,11 @@ const MapPage = () => {
                     return true;
                   }
                 });
-                console.log(longitude + ' ' + latitude + ' ' + values.nature);
                 createWaypoint({ variables: { long: longitude, lat: latitude, nature: values.nature }});
+                getWaypoints();
               }}
             >
-              {({ values, errors, isSubmitting, handleChange }) => (
+              {({ values, errors, handleChange }) => (
                 <Form>
                   <Heading mb={5}>Student Incidence Reporting</Heading>
                   <FormLabel htmlFor="nature" mt={4}>
@@ -166,7 +182,7 @@ const MapPage = () => {
               )}
             </Formik>
           </Box>
-          {loading ? <></> : <Map w={500} ml={{ base: '0px', md: '10px' }} data={data} />}
+          <Map w={500} ml={{ base: '0px', md: '10px' }} data={waypoints} />
         </Flex>
       </Center>
     </>

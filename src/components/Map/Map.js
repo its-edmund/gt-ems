@@ -5,16 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 
 const Map = props => {
-  const [viewPort, setViewPort] = useState({
+  const [viewPort] = useState({
     lat: 33.7765,
     lng: -84.3983,
   });
-  const [zoom, setZoom] = useState(15);
+  const [zoom] = useState(15);
   const [waypoints, setWaypoints] = useState([]);
  
   useEffect(() => {
-    setWaypoints(props.data ? props.data.getWaypoints : []);
-  }, []);
+    setWaypoints(props.data ? props.data : []);
+  }, [props]);
 
   return (
     <Box {...props} overflow="hidden" zIndex={0} borderRadius="10px" shadow="lg">
@@ -23,9 +23,9 @@ const Map = props => {
         defaultCenter={viewPort}
         defaultZoom={zoom}
       >
-        {waypoints.map(waypoint => (
+        {waypoints.map((waypoint) => (
           <div
-            key={waypoint}
+            key={waypoint.id}
             lng={waypoint.long}
             lat={waypoint.lat}
           >

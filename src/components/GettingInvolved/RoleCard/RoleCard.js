@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Box, Heading, Text, Stack } from '@chakra-ui/react';
+import { Button, Heading, Text, Stack } from '@chakra-ui/react';
 
 const RoleCard = props => {
   return (

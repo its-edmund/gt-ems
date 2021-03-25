@@ -26,8 +26,8 @@ import axios from 'axios';
 import { ApolloClient, gql, InMemoryCache, useMutation, useLazyQuery } from '@apollo/client';
 import badWords from 'bad-words';
 // import ReactDatePicker from 'react-datepicker';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 import Map from './Map';
 import Navbar from '../Navbar/Navbar';

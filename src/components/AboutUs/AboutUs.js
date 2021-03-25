@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Flex, Heading, Stack, Text, Link, Button, Image } from '@chakra-ui/react';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react';
 import Layout from '../Layout';
+import { useDisclosure } from '@chakra-ui/react';
 
 const QUERY = gql`
   query AboutUsTexts {
@@ -32,14 +41,35 @@ const QUERY = gql`
 `;
 
 const AboutUs = () => {
+
   const { data, errors, loading } = useQuery(QUERY);
 
   console.log(errors);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [biography, setBiography] = useState('hi');
+
+  function handleClick(value) {
+    setBiography(value);
+    {onOpen();}
+  }
 
   return loading ? (
     <div></div>
   ) : (
     <Layout>
+      <Heading
+        my={10}
+        as="h1"
+        fontSize={{ base: '3xl', md: '4xl', xl: '5xl' }}
+        fontWeight="bold"
+        color="mint.700"
+        textAlign="center"
+        paddingBottom={[5, 5, 5]}
+      >
+          About Us
+      </Heading>
       <Stack
         align="center"
         justify={{
@@ -58,16 +88,6 @@ const AboutUs = () => {
         w={{base: '80%', md: '60%'}}
         spacing={10}
       >
-        <Heading
-          as="h1"
-          fontSize={{ base: '3xl', md: '4xl', xl: '5xl' }}
-          fontWeight="bold"
-          color="mint.700"
-          textAlign="center"
-          paddingBottom={[5, 5, 5]}
-        >
-          {'About Us'}
-        </Heading>
         {data.aboutUsTextCollection.items.map((section) => (
           <Flex direction='column' spacing={4} align="center" key={section}>
             <Heading
@@ -102,16 +122,26 @@ const AboutUs = () => {
           direction={{base: 'column', md: 'row'}}
         >
           {data.personCollection.items.map((person) => (
-            <Flex align='center' direction='column' mb={{ base: 12, md: 0 }} key={person}>
+            <Flex align='center' direction='column' mb={{ base: 12, md: 0 }} key={person} onClick={() => handleClick(person.biography)} cursor='pointer'>
               <Image src={person.profilePicture.url} mb={5} borderRadius="full" w={{base: '200px', md: '100px'}} />
-              <Heading fontSize='2xl' >
+              <Heading fontSize='2xl' onClick={() => handleClick(person.biography)}>
                 {person.position}
               </Heading>
-              <Text color="gray.500" fontSize="lg">
+              <Text color="gray.500" fontSize="lg" onClick={() => handleClick(person.biography)} cursor='pointer'>
                 {person.name}
               </Text>
             </Flex>
           ))}
+          <Modal isOpen={isOpen} onClose={onClose} isCentered>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Biography</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody mb={4}>
+                {biography}
+              </ModalBody>
+            </ModalContent>
+          </Modal>
         </Stack>  
         <Link mt={10} textDecoration="none" href="/gettinginvolved">
           <Button

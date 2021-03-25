@@ -37,7 +37,15 @@ const Resources = () => {
   return (
     <Layout>
       <Flex direction="column" my={10} align="center">
-        <Heading as="h1" color="mint.700" fontSize="4xl" fontWeight="bold" mb={30}>
+        <Heading
+          my={10}
+          as="h1"
+          fontSize={{ base: '3xl', md: '4xl', xl: '5xl' }}
+          fontWeight="bold"
+          color="mint.700"
+          textAlign="center"
+          paddingBottom={[5, 5, 5]}
+        >
           Resources
         </Heading>
       </Flex>

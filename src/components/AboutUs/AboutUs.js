@@ -6,7 +6,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react';
@@ -60,6 +59,17 @@ const AboutUs = () => {
     <div></div>
   ) : (
     <Layout>
+      <Heading
+        my={10}
+        as="h1"
+        fontSize={{ base: '3xl', md: '4xl', xl: '5xl' }}
+        fontWeight="bold"
+        color="mint.700"
+        textAlign="center"
+        paddingBottom={[5, 5, 5]}
+      >
+          About Us
+      </Heading>
       <Stack
         align="center"
         justify={{
@@ -78,16 +88,6 @@ const AboutUs = () => {
         w={{base: '80%', md: '60%'}}
         spacing={10}
       >
-        <Heading
-          as="h1"
-          fontSize={{ base: '3xl', md: '4xl', xl: '5xl' }}
-          fontWeight="bold"
-          color="mint.700"
-          textAlign="center"
-          paddingBottom={[5, 5, 5]}
-        >
-          {'About Us'}
-        </Heading>
         {data.aboutUsTextCollection.items.map((section) => (
           <Flex direction='column' spacing={4} align="center" key={section}>
             <Heading
@@ -137,15 +137,9 @@ const AboutUs = () => {
             <ModalContent>
               <ModalHeader>Biography</ModalHeader>
               <ModalCloseButton />
-              <ModalBody>
+              <ModalBody mb={4}>
                 {biography}
               </ModalBody>
-
-              <ModalFooter>
-                <Button colorScheme="blue" mr={3} onClick={onClose}>
-                  Close
-                </Button>
-              </ModalFooter>
             </ModalContent>
           </Modal>
         </Stack>  

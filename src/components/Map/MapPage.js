@@ -10,11 +10,24 @@ import {
   Flex,
   Center,
   Text,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Link,
+  // Tooltip,
+  Checkbox,
+  Stack
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { ApolloClient, gql, InMemoryCache, useMutation, useLazyQuery } from '@apollo/client';
 import badWords from 'bad-words';
 // import ReactDatePicker from 'react-datepicker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 import Map from './Map';
 import Navbar from '../Navbar/Navbar';
@@ -51,6 +64,7 @@ const CREATE_WAYPOINT = gql`
 const MapPage = () => {
   const [locations, setLocations] = useState([]);
   const [waypoints, setWaypoints] = useState([]);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [createWaypoint, { loading: mutationLoading }] = useMutation(CREATE_WAYPOINT, {
     client: mongoClient,
@@ -65,6 +79,7 @@ const MapPage = () => {
   });
 
   useEffect(() => {
+    onOpen();
     const fetchData = async () => {
       const locations = await axios.get('https://m.gatech.edu/api/gtplaces/buildings/');
       let locationsNoDupes = [];
@@ -96,13 +111,24 @@ const MapPage = () => {
   return (
     <>
       <Navbar />
-      <Center mt={100}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent pb={5}>
+          <ModalHeader>Disclaimer</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text>This project is still a work in progress. It is meant to be used to improve the safety and awareness on campus. Please do not abuse our reporting system. If you see an inappropriate entry, contact <Link color='mint.500' fontWeight='extrabold' href='mailto:georgiatechems@gmail.com'>georgiatechems@gmail.com</Link> immediately. Thank you for your help!</Text>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+      <Center mt={50}>
         <Flex direction={{ base: 'column', md: 'row' }}>
-          <Box h="400px" p={5} borderWidth="1px" borderRadius={10} shadow="md" mr={{ base: '0px', md: '10px' }}>
+          <Box h="500px" w={500} p={5} borderWidth="1px" borderRadius={10} shadow="md" mr={{ base: '0px', md: '10px' }}>
             <Formik
               initialValues={{
                 nature: '',
-                location: 'Select a Location'
+                location: 'Select a Location',
+                agreement: false
               }}
               validateOnChange={false}
               validate={values => {
@@ -116,6 +142,9 @@ const MapPage = () => {
                 }
                 if (values.location === 'Select a Location') {
                   errors.location = 'The location of the incidence is required';
+                }
+                if (!values.agreement) {
+                  errors.agreement = 'Please check the agreement before submitting your entry';
                 }
                 return errors;
               }}
@@ -135,58 +164,58 @@ const MapPage = () => {
             >
               {({ values, errors, handleChange }) => (
                 <Form>
-                  <Heading mb={5}>Student Incidence Reporting</Heading>
-                  <FormLabel htmlFor="nature" mt={4}>
-                    Nature of Incident
-                  </FormLabel>
-                  <Input
-                    value={values.nature}
-                    name="nature"
-                    onChange={handleChange}
-                    placeholder="Nature of Incident"
-                  />
-                  {errors.nature ? (
-                    <Box backgroundColor="#ffa6a6" borderRadius={5} padding={3} mt={2}>
-                      <Text color="#000">{errors.nature}</Text>
-                    </Box>
-                  ) : null}
-                  <FormLabel htmlFor="name" mt={4}>
-                    Incident Location
-                  </FormLabel>
-                  <Select value={values.location} name="location" onChange={handleChange}>
-                    <option key="null">Select a Location</option>
-                    {locations.map(location => {
-                      return <option key={location.name}>{location.name}</option>;
-                    })}
-                  </Select>
-                  {errors.location ? (
-                    <Box backgroundColor="#ffa6a6" borderRadius={5} padding={3} mt={2}>
-                      <Text color="#000">{errors.location}</Text>
-                    </Box>
-                  ) : null}
-                  {/* <Field name="date">
-                    {({ field, form }) => (
-                      <FormControl isInvalid={form.errors.location && form.touched.location}>
-                        <FormLabel htmlFor="published-date">Published Date</FormLabel>
-                        <DatePicker selectedDate={field} onChange={(d) => console.log(d)} />
-                        <FormErrorMessage>{form.errors.location}</FormErrorMessage>
-                      </FormControl>
-                    )}
-                  </Field> */}
-                  <Button
-                    mt={4}
-                    backgroundColor="mint.700"
-                    color="white"
-                    borderRadius="8px"
-                    _hover={{ bg: 'mint.300' }}
-                    isLoading={mutationLoading}
-                    type="submit"
-                  >
+                  <Stack direction='column' spacing={2}>
+                    <Heading>Student Incidence Reporting</Heading>
+                    <FormLabel htmlFor="nature">
+                    Nature of Incident {/* <Tooltip label="Please specify the type of medical issue that is being reported" placement='top' closeOnClick={false} closeDelay={500}><FontAwesomeIcon icon={faInfoCircle} size="sm" /></Tooltip> */}
+                    </FormLabel>
+                    <Input
+                      value={values.nature}
+                      name="nature"
+                      onChange={handleChange}
+                      placeholder="Nature of Incident"
+                    />
+                    {errors.nature ? (
+                      <Box backgroundColor="#ffa6a6" borderRadius={5} padding={2} mt={2}>
+                        <Text color="#000">{errors.nature}</Text>
+                      </Box>
+                    ) : null}
+                    <FormLabel htmlFor="name">
+                    Incident Location {/* <Tooltip label="Hey, I'm here!" aria-label="A tooltip"><FontAwesomeIcon icon={faInfoCircle} size="sm" /></Tooltip> */}
+                    </FormLabel>
+                    <Select value={values.location} name="location" onChange={handleChange}>
+                      <option key="null">Select a Location</option>
+                      {locations.map(location => {
+                        return <option key={location.name}>{location.name}</option>;
+                      })}
+                    </Select>
+                    {errors.location ? (
+                      <Box backgroundColor="#ffa6a6" borderRadius={5} padding={2} mt={2}>
+                        <Text color="#000">{errors.location}</Text>
+                      </Box>
+                    ) : null}
+                    <Checkbox value={values.agreement} name='agreement' onChange={handleChange}><Text overflowWrap='break-word'>I understand that my entry will be public and it is appropriate for it to be so.</Text></Checkbox>
+                    {errors.agreement ? (
+                      <Box backgroundColor="#ffa6a6" borderRadius={5} padding={2} mt={2}>
+                        <Text color="#000">{errors.agreement}</Text>
+                      </Box>
+                    ) : null}
+                    <Button
+                      my={4}
+                      backgroundColor="mint.700"
+                      color="white"
+                      borderRadius="8px"
+                      _hover={{ bg: 'mint.300' }}
+                      isLoading={mutationLoading}
+                      type="submit"
+                    >
                     Submit
-                  </Button>
+                    </Button>
+                  </Stack>
                 </Form>
               )}
             </Formik>
+            <Link as='i' color='#adadad' href='mailto:georgiatechems@gmail.com'>Report abuse</Link>
           </Box>
           <Map w={500} ml={{ base: '0px', md: '10px' }} data={waypoints} />
         </Flex>

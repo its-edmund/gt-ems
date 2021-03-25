@@ -2,7 +2,7 @@ import React from 'react';
 import { Stack, Flex, Link, Image, Box } from '@chakra-ui/react';
 import pic from '../../assets/gtems.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faFacebook, faSlack, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 // import { Flex, Link } from '@chakra-ui/react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faFacebookF, faInstagram, faLinkedin, faSlack } from '@fortawesome/free-brands-svg-icons';
@@ -18,10 +18,15 @@ const Footer = () => {
             </Box>
           </Link>
           <Stack direction='row' ml={5} spacing={3} color="mint.700">
-            <FontAwesomeIcon icon={faInstagram} size="2x" />
-            <FontAwesomeIcon icon={faFacebook} size="2x" />
-            <FontAwesomeIcon icon={faLinkedin} size="2x" />
-            <FontAwesomeIcon icon={faSlack} size="2x" />
+            <Link href='https://www.instagram.com/georgiatechems/' target="_blank">
+              <FontAwesomeIcon icon={faInstagram} size="2x" />
+            </Link>
+            <Link href='https://www.facebook.com/georgiatechems' target="_blank">
+              <FontAwesomeIcon icon={faFacebook} size="2x" />
+            </Link>
+            <Link href='https://www.linkedin.com/company/georgia-tech-emergency-medical-services' target="_blank">
+              <FontAwesomeIcon icon={faLinkedin} size="2x" />
+            </Link>
           </Stack>
         </Flex>
         <Stack direction="column" mt={2} spacing={1} w='150px' color='mint.700' fontSize={15}>

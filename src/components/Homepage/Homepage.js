@@ -305,6 +305,20 @@ const Homepage = () => {
           <Text color="mint.500" fontSize="2xl">
             {data.homepageText.paragraphTwoBody}
           </Text>
+          <Link href='/Map'>
+            <Button
+              backgroundColor="mint.700"
+              color="white"
+              borderRadius="8px"
+              py="4"
+              px="4"
+              lineHeight="1"
+              size="lg"
+              _hover={{ bg: 'mint.300' }}
+            >
+            Student Report Map
+            </Button>
+          </Link>
         </Stack>
       </Flex>
       {/* <Box align="center">

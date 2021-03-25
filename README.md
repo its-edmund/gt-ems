@@ -27,13 +27,14 @@ Repository for the GT EMS Website
 
 ## Deployment
 
-This repository is set up with [Netlify](https://www.netlify.com/), which creates preview deployments on every PR and deploys to the [main deployment site](https://gt-ems.netlify.app/) on pushes to `main`.
+This repository is hosted with [Google Firebase](https://firebase.google.com/), which creates preview deployments on every PR and deploys to the [main deployment site](https://gt-ems-b08c9.web.app/) on pushes to `main`.
 
 ## Stack
 
 - React.js - frontend components
 - GraphQL - API Calls
 - Contentful - content management
+- Node/Express/Apollo - Backend server
 - eslint - linting
 - prettier - formatting
 - yarn - package management

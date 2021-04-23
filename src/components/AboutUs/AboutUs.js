@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
-import { Flex, Heading, Stack, Text, Link, Button, Image } from '@chakra-ui/react';
 import {
+  Flex,
+  SimpleGrid,
+  Heading,
+  Stack,
+  Text,
+  Link,
+  Button,
+  Image,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
   ModalBody,
   ModalCloseButton,
+  useDisclosure,
 } from '@chakra-ui/react';
 import Layout from '../Layout';
-import { useDisclosure } from '@chakra-ui/react';
 
 const QUERY = gql`
   query AboutUsTexts {
@@ -41,18 +48,21 @@ const QUERY = gql`
 `;
 
 const AboutUs = () => {
-
   const { data, errors, loading } = useQuery(QUERY);
 
   console.log(errors);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [biography, setBiography] = useState('hi');
+  const [biography, setBiography] = useState('');
+  const [name, setName] = useState('');
 
-  function handleClick(value) {
-    setBiography(value);
-    {onOpen();}
+  function handleClick(newName, newBiography) {
+    setBiography(newBiography);
+    setName(newName);
+    {
+      onOpen();
+    }
   }
 
   return loading ? (
@@ -68,7 +78,7 @@ const AboutUs = () => {
         textAlign="center"
         paddingBottom={[5, 5, 5]}
       >
-          About Us
+        About Us
       </Heading>
       <Stack
         align="center"
@@ -84,12 +94,12 @@ const AboutUs = () => {
         wrap="no-wrap"
         minH="auto"
         mb={{ base: 8, md: 10 }}
-        mx='auto'
-        w={{base: '80%', md: '60%'}}
+        mx="auto"
+        w={{ base: '80%', md: '60%' }}
         spacing={10}
       >
-        {data.aboutUsTextCollection.items.map((section) => (
-          <Flex direction='column' spacing={4} align="center" key={section}>
+        {data.aboutUsTextCollection.items.map(section => (
+          <Flex direction="column" spacing={4} align="center" key={section}>
             <Heading
               as="h1"
               size="lg"
@@ -108,26 +118,32 @@ const AboutUs = () => {
         ))}
       </Stack>
       <Flex
-        align='center'
-        justify='center'
-        direction='column'
-        mx='auto'
+        align="center"
+        justify="center"
+        direction="column"
+        mx="auto"
         my={20}
         wrap="no-wrap"
         minH="auto"
       >
-        <Stack
-          ml={{base: 0, md: 30}}
-          spacing={100}
-          direction={{base: 'column', md: 'row'}}
-        >
-          {data.personCollection.items.map((person) => (
-            <Flex align='center' direction='column' mb={{ base: 12, md: 0 }} key={person} onClick={() => handleClick(person.biography)} cursor='pointer'>
-              <Image src={person.profilePicture.url} mb={5} borderRadius="full" w={{base: '200px', md: '100px'}} />
-              <Heading fontSize='2xl' onClick={() => handleClick(person.biography)}>
-                {person.position}
-              </Heading>
-              <Text color="gray.500" fontSize="lg" onClick={() => handleClick(person.biography)} cursor='pointer'>
+        <SimpleGrid columns={3} spacing={100}>
+          {data.personCollection.items.map(person => (
+            <Flex
+              align="center"
+              direction="column"
+              mb={{ base: 12, md: 0 }}
+              key={person}
+              onClick={() => handleClick(person.name, person.biography)}
+              cursor="pointer"
+            >
+              <Image
+                src={person.profilePicture ? person.profilePicture.url : ''}
+                mb={5}
+                borderRadius="full"
+                w={{ base: '200px', md: '100px' }}
+              />
+              <Heading fontSize="2xl">{person.position}</Heading>
+              <Text color="gray.500" fontSize="lg" cursor="pointer">
                 {person.name}
               </Text>
             </Flex>
@@ -135,14 +151,12 @@ const AboutUs = () => {
           <Modal isOpen={isOpen} onClose={onClose} isCentered>
             <ModalOverlay />
             <ModalContent>
-              <ModalHeader>Biography</ModalHeader>
+              <ModalHeader>{name}</ModalHeader>
               <ModalCloseButton />
-              <ModalBody mb={4}>
-                {biography}
-              </ModalBody>
+              <ModalBody mb={4}>{biography}</ModalBody>
             </ModalContent>
           </Modal>
-        </Stack>  
+        </SimpleGrid>
         <Link mt={10} textDecoration="none" href="/gettinginvolved">
           <Button
             backgroundColor="mint.700"
@@ -154,7 +168,7 @@ const AboutUs = () => {
             size="lg"
             _hover={{ bg: 'mint.300' }}
           >
-              Join our Team →
+            Join our Team →
           </Button>
         </Link>
       </Flex>

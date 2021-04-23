@@ -23,10 +23,10 @@ const Navbar = props => {
       py={4}
       bg={['mint.300', 'mint.300', 'white', 'white']}
       {...props}
-      zIndex='12'
+      zIndex="12"
       pos="sticky"
-      top='0'
-      shadow='md'
+      top="0"
+      shadow="md"
     >
       <Logo w="150px" color={['white', 'white', 'teal.400', 'teal.400']} />
       <MenuToggle toggle={toggle} isOpen={isOpen} />
@@ -43,7 +43,7 @@ const Navbar = props => {
           color={['white', 'white', 'mint.700', 'mint.700']}
         >
           <MenuItem to="/">Home</MenuItem>
-          <MenuItem to="/map">Map</MenuItem>
+          {/*<MenuItem to="/map">Map</MenuItem>*/}
           <MenuItem to="/Resources">Resources</MenuItem>
           <MenuItem to="/AboutUs">About Us</MenuItem>
           <MenuItem to="/GettingInvolved">
@@ -53,7 +53,7 @@ const Navbar = props => {
               borderRadius="8px"
               _hover={{ bg: 'mint.300' }}
             >
-            Get Involved
+              Get Involved
             </Button>
           </MenuItem>
         </Stack>

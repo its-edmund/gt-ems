@@ -9,12 +9,20 @@ import Layout from '../Layout';
 
 const HOMEPAGEQUERY = gql`
   query HomepageText {
+    emergencyContact(id: "2SCDCwuUWBSvzcVEtxtr3D") {
+      emergencyNumber
+      nonEmergencyNumber
+      address
+      businessOffice
+      businessFax
+      email
+    }
+
     homepageText(id: "4tuLaiJsGbSYTlZVcUz8mj") {
       jumbotronTitle
       jumbotronSubtitle
       jumbotronButtonText
       jumbotronButtonLink
-      emergencyContact
       paragraphOneTitle
       paragraphOneBody
       paragraphTwoTitle
@@ -140,8 +148,8 @@ const Homepage = () => {
         <Box
           mt={{ base: 30, md: 0 }}
           ml={{ base: 0, md: 10 }}
-          w={{ base: '80%', md: '96' }}
-          p={10}
+          w={{ base: '80%', md: '30vw' }}
+          p={8}
           bgColor="mint.300"
           borderRadius="lg"
           shadow="lg"
@@ -150,7 +158,22 @@ const Homepage = () => {
             Emergency Contact
           </Heading>
           <Text color="mint.500" fontSize="lg">
-            {data.homepageText.emergencyContact}
+            {data.emergencyContact.emergencyNumber}
+          </Text>
+          <Text color="mint.500" fontSize="lg">
+            {data.emergencyContact.nonEmergencyNumber}
+          </Text>
+          <Text color="mint.500" fontSize="lg">
+            {data.emergencyContact.address}
+          </Text>
+          <Text color="mint.500" fontSize="lg">
+            {data.emergencyContact.businessOffice}
+          </Text>
+          <Text color="mint.500" fontSize="lg">
+            {data.emergencyContact.businessFax}
+          </Text>
+          <Text color="mint.500" fontSize="lg">
+            {data.emergencyContact.email}
           </Text>
         </Box>
       </Flex>
@@ -229,7 +252,7 @@ const Homepage = () => {
             Who Are We?
           </Heading>
           <Text color="mint.500" fontSize="2xl">
-            We are an on-campus organization that is striving to make Georgia Tech a safer place.
+            We are an on-campus organization that is striving to make Georgia Tech a safer place. We provide manpower to school events and resources for students interested in EMT Training.
           </Text>
         </Stack>
       </Flex>

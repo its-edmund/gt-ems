@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   Box,
   Flex,
   Button,
@@ -13,7 +13,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  useDisclosure
+  useDisclosure,
 } from '@chakra-ui/react';
 import { useQuery, gql } from '@apollo/client';
 import { Link as ScrollTo } from 'react-scroll';
@@ -35,6 +35,12 @@ const QUERY = gql`
           url
           description
         }
+        imageShowcaseCollection {
+          items {
+            url
+            description
+          }
+        }
       }
     }
     roleCollection {
@@ -55,11 +61,15 @@ const GettingInvolved = () => {
 
   const [article, setArticle] = useState('');
   const [articleTitle, setArticleTitle] = useState('');
+  const [showcaseImages, setShowcaseImages] = useState([]);
 
-  function handleClick(newArticle, newArticleTitle) {
+  function handleClick(newArticle, newArticleTitle, newImages) {
     setArticle(newArticle);
     setArticleTitle(newArticleTitle);
-    {onOpen();}
+    setShowcaseImages(newImages);
+    {
+      onOpen();
+    }
   }
 
   if (data) {
@@ -154,7 +164,20 @@ const GettingInvolved = () => {
             data.initiativeCollection.items.map((initiative, i) => (
               <Flex direction="row" key={i}>
                 <Flex direction="column" mr={20}>
-                  <Heading as="h3" size="lg" color="mint.700" fontSize="2xl" onClick={() => handleClick(initiative.article, initiative.title)}>
+                  <Heading
+                    as="h3"
+                    size="lg"
+                    color="mint.700"
+                    fontSize="2xl"
+                    onClick={() => {
+                      console.log(initiative.imageShowcaseCollection.items);
+                      handleClick(
+                        initiative.article,
+                        initiative.title,
+                        initiative.imageShowcaseCollection.items,
+                      );
+                    }}
+                  >
                     {initiative.title}
                   </Heading>
                   <Text color="mint.500" fontSize="xl">
@@ -175,7 +198,23 @@ const GettingInvolved = () => {
             <ModalContent>
               <ModalHeader>{articleTitle}</ModalHeader>
               <ModalCloseButton />
-              <ModalBody mb={4}>{article}</ModalBody>
+              <ModalBody mb={4}>
+                <Text>{article}</Text>
+                <Flex direction="column" align="center">
+                  {showcaseImages.map((image, i) => {
+                    console.log(image);
+                    return (
+                      <Image
+                        py="15px"
+                        key={i}
+                        maxWidth="80%"
+                        alt={image ? image.description : ''}
+                        src={image ? image.url : ''}
+                      />
+                    );
+                  })}
+                </Flex>
+              </ModalBody>
             </ModalContent>
           </Modal>
         </Stack>
